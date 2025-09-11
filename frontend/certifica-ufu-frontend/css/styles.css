@@ -1,0 +1,458 @@
+/* Custom Styles for Certifica UFU */
+
+/* Global Styles */
+:root {
+    --primary-color: #0d6efd;
+    --secondary-color: #6c757d;
+    --success-color: #198754;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #0dcaf0;
+    --light-color: #f8f9fa;
+    --dark-color: #212529;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #1a1a1a;
+    color: #e9ecef;
+}
+
+body.dark-mode .bg-light {
+    background-color: #2d2d2d !important;
+}
+
+body.dark-mode .text-dark {
+    color: #e9ecef !important;
+}
+
+body.dark-mode .text-muted {
+    color: #adb5bd !important;
+}
+
+body.dark-mode .card {
+    background-color: #2d2d2d;
+    border-color: #495057;
+}
+
+body.dark-mode .card-header {
+    background-color: #343a40 !important;
+    border-color: #495057;
+}
+
+body.dark-mode .list-group-item {
+    background-color: #2d2d2d;
+    border-color: #495057;
+    color: #e9ecef;
+}
+
+body.dark-mode .list-group-item:hover {
+    background-color: #343a40;
+}
+
+body.dark-mode .modal-content {
+    background-color: #2d2d2d;
+    color: #e9ecef;
+}
+
+body.dark-mode .modal-header {
+    border-color: #495057;
+}
+
+body.dark-mode .modal-footer {
+    border-color: #495057;
+}
+
+body.dark-mode .form-control,
+body.dark-mode .form-select {
+    background-color: #343a40;
+    border-color: #495057;
+    color: #e9ecef;
+}
+
+body.dark-mode .form-control:focus,
+body.dark-mode .form-select:focus {
+    background-color: #343a40;
+    border-color: var(--primary-color);
+    color: #e9ecef;
+}
+
+body.dark-mode .table {
+    color: #e9ecef;
+}
+
+body.dark-mode .table-hover tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.075);
+}
+
+body.dark-mode .dropdown-menu {
+    background-color: #2d2d2d;
+    border-color: #495057;
+}
+
+body.dark-mode .dropdown-item {
+    color: #e9ecef;
+}
+
+body.dark-mode .dropdown-item:hover {
+    background-color: #343a40;
+    color: #e9ecef;
+}
+
+body.dark-mode footer {
+    background-color: #2d2d2d !important;
+}
+
+/* Dark Mode Toggle Button */
+#darkModeToggle {
+    color: rgba(255, 255, 255, 0.75);
+    transition: color 0.2s ease;
+}
+
+#darkModeToggle:hover {
+    color: rgba(255, 255, 255, 1);
+}
+
+body.dark-mode #darkModeToggle i::before {
+    content: "\f5a2"; /* sun-fill icon */
+}
+
+/* Custom Background Gradients */
+.bg-gradient-primary {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #0056b3 100%);
+}
+
+/* Card Hover Effects */
+.card-hover {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Custom Button Styles */
+.btn {
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+/* Loading States */
+.btn-loading .btn-text {
+    display: none;
+}
+
+.btn-loading .btn-loading {
+    display: inline-flex !important;
+}
+
+/* Form Enhancements */
+.form-control, .form-select {
+    border-radius: 0.5rem;
+    border: 1px solid #dee2e6;
+    transition: all 0.2s ease;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+}
+
+/* Custom File Input */
+.form-control[type="file"] {
+    padding: 0.5rem;
+}
+
+/* Progress Bar Enhancements */
+.progress {
+    border-radius: 1rem;
+    background-color: #e9ecef;
+}
+
+.progress-bar {
+    border-radius: 1rem;
+    transition: width 0.6s ease;
+}
+
+/* Badge Enhancements */
+.badge {
+    font-weight: 500;
+    padding: 0.5em 0.75em;
+}
+
+/* Table Enhancements */
+.table-hover tbody tr:hover {
+    background-color: rgba(13, 110, 253, 0.05);
+}
+
+/* Modal Enhancements */
+.modal-content {
+    border-radius: 1rem;
+    border: none;
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+}
+
+.modal-header {
+    border-bottom: 1px solid #dee2e6;
+    border-radius: 1rem 1rem 0 0;
+}
+
+.modal-footer {
+    border-top: 1px solid #dee2e6;
+    border-radius: 0 0 1rem 1rem;
+}
+
+/* Toast Enhancements */
+.toast {
+    border-radius: 0.75rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+/* Navbar Enhancements */
+.navbar-brand {
+    font-size: 1.5rem;
+}
+
+.navbar-nav .nav-link {
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Footer Styles */
+footer {
+    margin-top: auto;
+}
+
+/* Profile Picture Styles */
+.profile-picture-container {
+    position: relative;
+    display: inline-block;
+}
+
+/* Pending Documents Cards */
+#pendingDocumentsContainer {
+    min-height: 200px;
+}
+
+#pendingDocumentsContainer .document-card{
+     min-width: 48%; 
+     word-wrap: normal;
+    /* max-width: 48%; */
+}
+
+.document-card {
+    min-width: 280px;
+    max-width: 320px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.document-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Responsive Utilities */
+@media (max-width: 576px) {
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .card-body {
+        padding: 1rem;
+    }
+    
+    .btn {
+        padding: 0.5rem 1rem;
+    }
+    
+    .h3 {
+        font-size: 1.5rem;
+    }
+
+    .document-card {
+        min-width: 250px;
+        max-width: 280px;
+    }
+}
+
+@media (max-width: 768px) {
+    .table-responsive {
+        font-size: 0.875rem;
+    }
+    
+    .modal-dialog {
+        margin: 1rem;
+    }
+
+    #pendingDocumentsContainer {
+        flex-direction: row;
+        max-height: 60vh;
+    }
+
+    .document-card {
+        min-width: 100%;
+        max-width: 100%;
+    }
+}
+
+/* Custom Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* Status Badge Colors */
+.badge.status-pending {
+    background-color: var(--warning-color);
+    color: var(--dark-color);
+}
+
+.badge.status-approved {
+    background-color: var(--success-color);
+}
+
+.badge.status-rejected {
+    background-color: var(--danger-color);
+}
+
+/* List Group Enhancements */
+.list-group-item {
+    border-left: none;
+    border-right: none;
+    transition: all 0.2s ease;
+}
+
+.list-group-item:hover {
+    background-color: rgba(13, 110, 253, 0.05);
+}
+
+.list-group-item.unread {
+    background-color: rgba(13, 110, 253, 0.02);
+    border-left: 3px solid var(--primary-color);
+}
+
+/* Breadcrumb Enhancements */
+.breadcrumb {
+    background-color: transparent;
+    padding: 0;
+    margin-bottom: 1rem;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    content: "›";
+    color: var(--secondary-color);
+}
+
+/* Card Header Enhancements */
+.card-header {
+    background-color: #fff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    font-weight: 600;
+}
+
+/* Utility Classes */
+.text-truncate-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+/* Loading Spinner */
+.spinner-border-sm {
+    width: 1rem;
+    height: 1rem;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* Dark mode scrollbar */
+body.dark-mode ::-webkit-scrollbar-track {
+    background: #2d2d2d;
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb {
+    background: #495057;
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb:hover {
+    background: #6c757d;
+}
+
+/* --- Ajuste para caber 3 cards por linha --- */
+/* #pendingDocumentsContainer .document-card {
+
+    min-width: 0 !important;
+    max-width: 100% !important;
+    width: 50%;
+} */
+
+/* deixa o card um pouco mais baixo e enxuto */
+/* #pendingDocumentsContainer .card-body { padding: 0.75rem !important; } */
+/* #pendingDocumentsContainer .rounded-circle { width: 40px; height: 40px; }
+#pendingDocumentsContainer .btn            { padding: .25rem .75rem; font-size: .8rem; } */
+
+
+/* Print Styles */
+@media print {
+    .navbar,
+    .btn,
+    footer,
+    .toast-container {
+        display: none !important;
+    }
+    
+    .container {
+        max-width: none !important;
+    }
+}

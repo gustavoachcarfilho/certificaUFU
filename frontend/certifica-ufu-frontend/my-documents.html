@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Documentos - Certifica UFU</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="student-dashboard.html">
+                <i class="bi bi-mortarboard me-2"></i>Certifica UFU
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="student-dashboard.html">
+                            <i class="bi bi-house me-1"></i>Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="my-documents.html">
+                            <i class="bi bi-file-text me-1"></i>Meus Documentos
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="bi bi-person-circle me-1"></i>Maria Silva
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="profile.html">Perfil</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="login.html">Sair</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container my-4 flex-grow-1">
+        <!-- Page Header -->
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <div class="d-flex align-items-center">
+                <div class="bg-info bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3" 
+                     style="width: 50px; height: 50px;">
+                    <i class="bi bi-file-text text-info fs-4"></i>
+                </div>
+                <div>
+                    <h1 class="h3 mb-1">Meus Documentos</h1>
+                    <p class="text-muted mb-0">Acompanhe o status dos seus certificados</p>
+                </div>
+            </div>
+            <a href="submit-document.html" class="btn btn-primary">
+                <i class="bi bi-plus-circle me-2"></i>Novo Documento
+            </a>
+        </div>
+
+        <!-- Summary Cards -->
+        <div class="row g-3 mb-4">
+            <div class="col-6 col-md-3">
+                <div class="card text-center">
+                    <div class="card-body py-3">
+                        <i class="bi bi-files text-primary fs-3"></i>
+                        <div class="h4 mb-0 mt-2">5</div>
+                        <small class="text-muted">Total</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="card text-center">
+                    <div class="card-body py-3">
+                        <i class="bi bi-check-circle text-success fs-3"></i>
+                        <div class="h4 mb-0 mt-2">2</div>
+                        <small class="text-muted">Aprovados</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="card text-center">
+                    <div class="card-body py-3">
+                        <i class="bi bi-clock text-warning fs-3"></i>
+                        <div class="h4 mb-0 mt-2">2</div>
+                        <small class="text-muted">Em análise</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="card text-center">
+                    <div class="card-body py-3">
+                        <i class="bi bi-x-circle text-danger fs-3"></i>
+                        <div class="h4 mb-0 mt-2">1</div>
+                        <small class="text-muted">Rejeitados</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Documents Table -->
+        <div class="card shadow-sm">
+            <div class="card-header bg-white">
+                <h5 class="card-title mb-0">Lista de Documentos</h5>
+            </div>
+            <div class="card-body p-0">
+                <!-- Mobile View -->
+                <div class="d-md-none">
+                    <div class="list-group list-group-flush" id="documentsListMobile">
+                        <!-- Documents will be loaded here by JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Desktop View -->
+                <div class="d-none d-md-block">
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Título</th>
+                                    <th>Categoria</th>
+                                    <th>Status</th>
+                                    <th>Horas</th>
+                                    <th>Data de Envio</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody id="documentsTableBody">
+                                <!-- Documents will be loaded here by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Document Details Modal -->
+    <div class="modal fade" id="documentModal" tabindex="-1" aria-labelledby="documentModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="documentModalLabel">
+                        <i class="bi bi-file-text me-2"></i>Detalhes do Documento
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body" id="documentModalBody">
+                    <!-- Content will be loaded by JavaScript -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-0 text-muted">&copy; 2024 Universidade Federal de Uberlândia</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0 text-muted">Certifica UFU v1.0</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

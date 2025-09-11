@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Admin - Certifica UFU</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="admin-dashboard.html">
+                <i class="bi bi-mortarboard me-2"></i>Certifica UFU
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <button class="btn btn-link nav-link border-0 p-2" id="darkModeToggle"
+                            title="Alternar modo escuro">
+                            <i class="bi bi-moon-fill"></i>
+                        </button>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="notifications.html">
+                            <i class="bi bi-bell"></i>
+                            <span class="badge bg-danger ms-1">5</span>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="bi bi-person-circle me-1"></i>Prof. João Admin
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="profile.html">Perfil</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="login.html">Sair</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container my-4 flex-grow-1">
+        <!-- Page Header -->
+        <div class="d-flex align-items-center mb-4">
+            <div class="bg-primary bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3"
+                style="width: 50px; height: 50px;">
+                <i class="bi bi-speedometer2 text-primary fs-4"></i>
+            </div>
+            <div>
+                <h1 class="h3 mb-1">Dashboard Administrativo</h1>
+                <p class="text-muted mb-0">Gerencie documentos e oportunidades</p>
+            </div>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="row g-4 mb-4">
+            <div class="col-6 col-md-3">
+                <div class="card text-center">
+                    <div class="card-body py-3">
+                        <i class="bi bi-clock text-warning fs-3"></i>
+                        <div class="h4 mb-0 mt-2">8</div>
+                        <small class="text-muted">Pendentes</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="card text-center">
+                    <div class="card-body py-3">
+                        <i class="bi bi-check-circle text-success fs-3"></i>
+                        <div class="h4 mb-0 mt-2">45</div>
+                        <small class="text-muted">Aprovados</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="card text-center">
+                    <div class="card-body py-3">
+                        <i class="bi bi-x-circle text-danger fs-3"></i>
+                        <div class="h4 mb-0 mt-2">12</div>
+                        <small class="text-muted">Rejeitados</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="card text-center">
+                    <div class="card-body py-3">
+                        <i class="bi bi-calendar-event text-info fs-3"></i>
+                        <div class="h4 mb-0 mt-2">15</div>
+                        <small class="text-muted">Oportunidades</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <!-- Pending Documents Section -->
+            <div class="col-12 col-lg-8">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                        <h5 class="card-title mb-0">
+                            <i class="bi bi-file-text text-primary me-2"></i>Documentos Pendentes
+                        </h5>
+                        <span class="badge bg-warning">8 pendentes</span>
+                    </div>
+                    <div class="card-body p-3">
+                        <div class=" gap-3 overflow-auto row row-cols-1 row-cols-md-3" style="max-height: 80vh;"
+                            id="pendingDocumentsContainer">
+                            <!-- Cards will be loaded here by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="col-12 col-lg-4">
+                <div class="card shadow-sm mb-4">
+                    <div class="card-header bg-white">
+                        <h5 class="card-title mb-0">
+                            <i class="bi bi-lightning text-warning me-2"></i>Ações Rápidas
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-grid gap-2">
+                            <a href="opportunity-editor.html" class="btn btn-primary">
+                                <i class="bi bi-plus-circle me-2"></i>Nova Oportunidade
+                            </a>
+                            <button type="button" class="btn btn-outline-info" onclick="generateReport()">
+                                <i class="bi bi-file-earmark-bar-graph me-2"></i>Gerar Relatório
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary" onclick="exportData()">
+                                <i class="bi bi-download me-2"></i>Exportar Dados
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Manage Opportunities -->
+                <div class="card shadow-sm">
+                    <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                        <h5 class="card-title mb-0">
+                            <i class="bi bi-calendar-event text-info me-2"></i>Gerenciar Oportunidades
+                        </h5>
+                        <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#newOpportunityModal">
+                            <i class="bi bi-plus"></i>
+                        </button>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="list-group list-group-flush" id="opportunitiesList">
+                            <!-- Content will be loaded by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Opportunity Modal -->
+    <div class="modal fade" id="newOpportunityModal" tabindex="-1" aria-labelledby="newOpportunityModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="newOpportunityModalLabel">
+                        <i class="bi bi-plus-circle me-2"></i>Nova Oportunidade
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="newOpportunityForm" novalidate>
+                        <div class="row">
+                            <div class="col-12 mb-3">
+                                <label for="modalTitle" class="form-label">Título da Oportunidade *</label>
+                                <input type="text" class="form-control" id="modalTitle" name="title"
+                                    placeholder="Ex: Workshop de Inteligência Artificial" required>
+                                <div class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="modalCategory" class="form-label">Categoria *</label>
+                                <select class="form-select" id="modalCategory" name="category" required>
+                                    <option value="">Selecione a categoria</option>
+                                    <option value="ensino">Ensino</option>
+                                    <option value="pesquisa">Pesquisa</option>
+                                    <option value="extensao">Extensão</option>
+                                    <option value="monitoria">Monitoria</option>
+                                    <option value="cultural">Atividades Culturais</option>
+                                    <option value="esportiva">Atividades Esportivas</option>
+                                </select>
+                                <div class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="modalHours" class="form-label">Carga Horária</label>
+                                <input type="number" class="form-control" id="modalHours" name="hours"
+                                    placeholder="Ex: 20" min="1">
+                            </div>
+
+                            <div class="col-12 mb-3">
+                                <label for="modalDescription" class="form-label">Descrição *</label>
+                                <textarea class="form-control" id="modalDescription" name="description" rows="3"
+                                    placeholder="Descreva a oportunidade..." required></textarea>
+                                <div class="invalid-feedback"></div>
+                            </div>
+
+                            <div class="col-12 mb-3">
+                                <label for="modalExternalLink" class="form-label">Link Externo</label>
+                                <input type="url" class="form-control" id="modalExternalLink" name="externalLink"
+                                    placeholder="https://exemplo.com/inscricoes">
+                                <div class="invalid-feedback"></div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-success" id="saveOpportunityBtn">
+                        <i class="bi bi-check-circle me-2"></i>Salvar Oportunidade
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Document Details Modal -->
+    <div class="modal fade" id="documentDetailsModal" tabindex="-1" aria-labelledby="documentDetailsModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="documentDetailsModalLabel">
+                        <i class="bi bi-file-text me-2"></i>Detalhes do Documento
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body" id="documentDetailsBody">
+                    <!-- Content will be loaded by JavaScript -->
+                </div>
+                <div class="modal-footer" id="documentDetailsFooter">
+                    <!-- Buttons will be loaded by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rejection Reason Modal -->
+    <div class="modal fade" id="rejectionModal" tabindex="-1" aria-labelledby="rejectionModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="rejectionModalLabel">
+                        <i class="bi bi-x-circle text-danger me-2"></i>Rejeitar Documento
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="rejectionForm">
+                        <div class="mb-3">
+                            <label for="rejectionReason" class="form-label">Motivo da Rejeição *</label>
+                            <textarea class="form-control" id="rejectionReason" name="rejectionReason" rows="4"
+                                placeholder="Explique o motivo da rejeição para que o estudante possa corrigir..."
+                                required></textarea>
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        <input type="hidden" id="rejectionDocumentId" name="documentId">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="confirmRejectionBtn">
+                        <i class="bi bi-x-circle me-2"></i>Rejeitar Documento
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="adminToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <i class="bi bi-check-circle-fill text-success me-2"></i>
+                <strong class="me-auto">Ação Realizada</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+            </div>
+            <div class="toast-body"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-0 text-muted">&copy; 2024 Universidade Federal de Uberlândia</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0 text-muted">Certifica UFU v1.0</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
