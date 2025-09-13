@@ -6248,3 +6248,5 @@ Caused by: java.lang.IllegalArgumentException: Could not resolve placeholder 'aw
 2025-09-13 14:06:57.639 [                  ] [http-nio-8080-exec-2] INFO  c.u.c.services.CertificateService - Fetching certificates for user: gustavo@mail.com
 2025-09-13 14:07:06.620 [                  ] [http-nio-8080-exec-3] INFO  c.u.c.services.CertificateService - Fetching certificates for user: gustavo@mail.com
 2025-09-13 14:07:06.634 [                  ] [http-nio-8080-exec-8] INFO  c.u.c.services.CertificateService - Fetching certificates for user: gustavo@mail.com
+2025-09-13 14:14:17.986 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Node -1 disconnected.
+2025-09-13 14:16:23.911 [                  ] [kafka-producer-network-thread | producer-1] INFO  o.apache.kafka.clients.NetworkClient - [Producer clientId=producer-1] Node -1 disconnected.
