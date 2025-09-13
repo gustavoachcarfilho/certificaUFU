@@ -4,56 +4,59 @@ import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
-import { ArrowLeft, Calendar, Send } from 'lucide-react';
+import { ArrowLeft, Send } from 'lucide-react';
 import Link from 'next/link';
-// Importa a função da API
-import { applyToOpportunity } from '@/lib/api'; 
-// Assumindo que você terá uma função para buscar as oportunidades
-// import { getOpportunities } from '@/lib/services/api';
+// Importa as funções da API
+import { getAllOpportunities, applyToOpportunity } from '@/lib/api'; 
 
-// Mock de dados por enquanto
-const mockOpportunities = [
-    { id: '1', title: 'Workshop de Inteligência Artificial', description: 'Workshop prático sobre IA e Machine Learning.', hours: 20 },
-    { id: '2', title: 'Projeto de Pesquisa em IoT', description: 'Participe de um projeto de pesquisa inovador.', hours: 40 },
-    { id: '3', title: 'Monitoria de Cálculo I', description: 'Auxilie alunos com dúvidas e correção de listas.', hours: 60 },
-];
-
+// Interface para os dados da Oportunidade
+interface Opportunity {
+    id: string;
+    title: string;
+    description: string;
+    hours: number;
+    status: 'OPEN' | 'CLOSED' | 'FINISHED';
+    // Adicione outros campos que desejar exibir
+}
 
 export default function StudentOpportunitiesPage() {
-    const [opportunities, setOpportunities] = useState(mockOpportunities);
-    const [isLoading, setIsLoading] = useState<string | null>(null);
+    const [opportunities, setOpportunities] = useState<Opportunity[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [isApplying, setIsApplying] = useState<string | null>(null); // Controla o loading por botão
     const { toast } = useToast();
 
-    // No futuro, você pode buscar as oportunidades da API aqui:
-    // useEffect(() => {
-    //   const fetchOpportunities = async () => {
-    //     try {
-    //       const data = await getOpportunities();
-    //       setOpportunities(data);
-    //     } catch (error) {
-    //       toast({ title: "Erro ao buscar oportunidades", variant: "destructive" });
-    //     }
-    //   };
-    //   fetchOpportunities();
-    // }, []);
+    useEffect(() => {
+      const fetchOpportunities = async () => {
+        setIsLoading(true);
+        try {
+          // Busca apenas oportunidades com status 'OPEN'
+          const data: Opportunity[] = await getAllOpportunities();
+          setOpportunities(data.filter(opp => opp.status === 'OPEN'));
+        } catch (error) {
+          toast({ title: "Erro ao buscar oportunidades", variant: "destructive" });
+        } finally {
+          setIsLoading(false);
+        }
+      };
+      fetchOpportunities();
+    }, [toast]);
 
     const handleApply = async (opportunityId: string) => {
-        setIsLoading(opportunityId);
+        setIsApplying(opportunityId);
         try {
             await applyToOpportunity(opportunityId);
             toast({
                 title: "Inscrição realizada com sucesso!",
-                description: "Você se candidatou à oportunidade.",
+                description: "Sua candidatura foi registrada.",
             });
         } catch (error) {
-            console.error(error);
             toast({
                 title: "Erro na inscrição",
-                description: "Não foi possível processar sua candidatura. Tente novamente.",
+                description: "Não foi possível processar sua candidatura.",
                 variant: "destructive",
             });
         } finally {
-            setIsLoading(null);
+            setIsApplying(null);
         }
     };
 
@@ -69,9 +72,7 @@ export default function StudentOpportunitiesPage() {
                             </Button>
                         </Link>
                         <div>
-                            <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">
-                                Oportunidades
-                            </h1>
+                            <h1 className="text-xl sm:text-2xl font-bold">Oportunidades Abertas</h1>
                             <p className="text-sm text-gray-600 dark:text-gray-400">
                                 Candidate-se a novas atividades complementares
                             </p>
@@ -81,38 +82,41 @@ export default function StudentOpportunitiesPage() {
             </header>
 
             <main className="container-responsive py-6 sm:py-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {opportunities.map((opp) => (
-                        <Card key={opp.id} className="flex flex-col">
-                            <CardHeader>
-                                <CardTitle className="flex items-start justify-between">
-                                    <span>{opp.title}</span>
-                                    <span className="text-sm font-semibold text-primary">{opp.hours}h</span>
-                                </CardTitle>
-                                <CardDescription>{opp.description}</CardDescription>
-                            </CardHeader>
-                            <CardContent className="flex-grow flex items-end">
-                                <Button 
-                                    className="w-full"
-                                    onClick={() => handleApply(opp.id)}
-                                    disabled={isLoading === opp.id}
-                                >
-                                    {isLoading === opp.id ? (
-                                        <div className="flex items-center space-x-2">
-                                            <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                                            <span>Aplicando...</span>
-                                        </div>
-                                    ) : (
-                                        <div className="flex items-center space-x-2">
-                                            <Send className="w-4 h-4" />
-                                            <span>Candidatar-se</span>
-                                        </div>
-                                    )}
-                                </Button>
-                            </CardContent>
-                        </Card>
-                    ))}
-                </div>
+                {isLoading ? (
+                    <p>Carregando oportunidades...</p>
+                ) : opportunities.length > 0 ? (
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {opportunities.map((opp) => (
+                            <Card key={opp.id} className="flex flex-col">
+                                <CardHeader>
+                                    <CardTitle className="flex justify-between items-start">
+                                        <span>{opp.title}</span>
+                                        <span className="text-sm font-semibold text-primary whitespace-nowrap">{opp.hours}h</span>
+                                    </CardTitle>
+                                    <CardDescription>{opp.description}</CardDescription>
+                                </CardHeader>
+                                <CardContent className="flex-grow flex items-end mt-4">
+                                    <Button 
+                                        className="w-full"
+                                        onClick={() => handleApply(opp.id)}
+                                        disabled={isApplying === opp.id}
+                                    >
+                                        {isApplying === opp.id ? (
+                                            'Enviando...'
+                                        ) : (
+                                            <><Send className="w-4 h-4 mr-2" />Candidatar-se</>
+                                        )}
+                                    </Button>
+                                </CardContent>
+                            </Card>
+                        ))}
+                    </div>
+                ) : (
+                    <div className="text-center py-10">
+                        <h2 className="text-xl font-semibold">Nenhuma oportunidade aberta no momento.</h2>
+                        <p className="text-muted-foreground mt-2">Volte mais tarde para verificar novas vagas!</p>
+                    </div>
+                )}
             </main>
         </div>
     );

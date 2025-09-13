@@ -1,0 +1,762 @@
+2025-07-15 14:06:52.584 [main] INFO  c.a.e.EasycommProcessorApplication - Starting EasycommProcessorApplication using Java 21.0.7 with PID 24800 (C:\Users\Gustavo Achcar Filho\Desktop\projects\easycomm-monorepo\easycomm-processor\target\classes started by Gustavo Achcar Filho in C:\Users\Gustavo Achcar Filho\Desktop\projects\easycomm-monorepo)
+2025-07-15 14:06:52.596 [main] INFO  c.a.e.EasycommProcessorApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-15 14:06:53.270 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2025-07-15 14:06:53.336 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 56 ms. Found 2 MongoDB repository interfaces.
+2025-07-15 14:06:54.544 [main] INFO  org.mongodb.driver.client - MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "4.11.2"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Microsoft/21.0.7+6-LTS"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, transportSettings=null, streamFactoryFactory=null, commandListeners=[], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@19b75b2b, com.mongodb.Jep395RecordCodecProvider@59c43561, com.mongodb.KotlinCodecProvider@634f58d2]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null}
+2025-07-15 14:06:54.555 [cluster-ClusterId{value='68768aae881ea91ceca2dc7c', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=25, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=30315100}
+2025-07-15 14:06:55.492 [main] INFO  o.a.k.c.consumer.ConsumerConfig - ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.include.jmx.reporter = true
+	auto.offset.reset = latest
+	bootstrap.servers = [localhost:9092]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-certificate-processor-1
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = certificate-processor
+	group.instance.id = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.springframework.kafka.support.serializer.JsonDeserializer
+
+2025-07-15 14:06:55.620 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka version: 3.6.2
+2025-07-15 14:06:55.621 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka commitId: c4deed513057c94e
+2025-07-15 14:06:55.621 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka startTimeMs: 1752599215617
+2025-07-15 14:06:55.625 [main] INFO  o.s.k.c.DefaultKafkaConsumerFactory$ExtendedKafkaConsumer - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Subscribed to topic(s): certificates-to-process
+2025-07-15 14:06:55.643 [main] INFO  c.a.e.EasycommProcessorApplication - Started EasycommProcessorApplication in 4.091 seconds (process running for 6.117)
+2025-07-15 14:06:56.068 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Node -1 disconnected.
+2025-07-15 14:06:56.070 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2025-07-15 14:06:56.070 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2025-07-15 14:06:56.172 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Node -1 disconnected.
+2025-07-15 14:06:56.173 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2025-07-15 14:06:56.174 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2025-07-15 14:06:56.281 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Node -1 disconnected.
+2025-07-15 14:06:56.283 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2025-07-15 14:06:56.284 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2025-07-15 14:06:56.578 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Node -1 disconnected.
+2025-07-15 14:06:56.579 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2025-07-15 14:06:56.579 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2025-07-15 14:06:57.057 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Node -1 disconnected.
+2025-07-15 14:06:57.058 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2025-07-15 14:06:57.058 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2025-07-15 14:06:57.913 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Node -1 disconnected.
+2025-07-15 14:06:57.913 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2025-07-15 14:06:57.914 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2025-07-15 14:06:59.086 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Node -1 disconnected.
+2025-07-15 14:06:59.086 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2025-07-15 14:06:59.086 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2025-07-15 14:07:00.126 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Node -1 disconnected.
+2025-07-15 14:07:00.127 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2025-07-15 14:07:00.128 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2025-07-15 14:07:01.339 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Node -1 disconnected.
+2025-07-15 14:07:01.341 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2025-07-15 14:07:01.341 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2025-07-15 14:07:02.505 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Node -1 disconnected.
+2025-07-15 14:07:02.506 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2025-07-15 14:07:02.507 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2025-07-15 14:07:03.359 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Node -1 disconnected.
+2025-07-15 14:07:03.361 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2025-07-15 14:07:03.361 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2025-07-15 14:07:04.464 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Node -1 disconnected.
+2025-07-15 14:07:04.465 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2025-07-15 14:07:04.465 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2025-07-15 14:07:05.626 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Node -1 disconnected.
+2025-07-15 14:07:05.627 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2025-07-15 14:07:05.627 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2025-07-15 14:07:06.837 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Node -1 disconnected.
+2025-07-15 14:07:06.837 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2025-07-15 14:07:06.837 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2025-07-15 14:07:08.032 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Node -1 disconnected.
+2025-07-15 14:07:08.032 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2025-07-15 14:07:08.032 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2025-07-15 14:07:09.195 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Node -1 disconnected.
+2025-07-15 14:07:09.195 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2025-07-15 14:07:09.197 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2025-07-15 14:07:10.297 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Node -1 disconnected.
+2025-07-15 14:07:10.297 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2025-07-15 14:07:10.298 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2025-07-15 14:07:11.115 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Node -1 disconnected.
+2025-07-15 14:07:11.117 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2025-07-15 14:07:11.117 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2025-07-15 14:07:12.283 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Node -1 disconnected.
+2025-07-15 14:07:12.284 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2025-07-15 14:07:12.284 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2025-07-15 14:07:13.093 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Node -1 disconnected.
+2025-07-15 14:07:13.094 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2025-07-15 14:07:13.095 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2025-07-15 14:07:13.957 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Node -1 disconnected.
+2025-07-15 14:07:13.957 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2025-07-15 14:07:13.957 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2025-07-15 14:07:15.186 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Node -1 disconnected.
+2025-07-15 14:07:15.186 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2025-07-15 14:07:15.186 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2025-07-15 14:07:16.363 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Node -1 disconnected.
+2025-07-15 14:07:16.366 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2025-07-15 14:07:16.368 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2025-07-15 14:07:17.241 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Node -1 disconnected.
+2025-07-15 14:07:17.241 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2025-07-15 14:07:17.241 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2025-07-15 14:07:18.347 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Node -1 disconnected.
+2025-07-15 14:07:18.348 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2025-07-15 14:07:18.350 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2025-07-15 14:07:19.391 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Node -1 disconnected.
+2025-07-15 14:07:19.392 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2025-07-15 14:07:19.392 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2025-07-15 14:07:20.622 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Node -1 disconnected.
+2025-07-15 14:07:20.622 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2025-07-15 14:07:20.622 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2025-07-15 14:07:21.788 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Node -1 disconnected.
+2025-07-15 14:07:21.789 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2025-07-15 14:07:21.789 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2025-07-15 14:07:22.955 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Node -1 disconnected.
+2025-07-15 14:07:22.955 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2025-07-15 14:07:22.955 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2025-07-15 14:07:23.869 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Node -1 disconnected.
+2025-07-15 14:07:23.870 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2025-07-15 14:07:23.870 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2025-07-15 14:07:24.724 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Node -1 disconnected.
+2025-07-15 14:07:24.724 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2025-07-15 14:07:24.724 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2025-07-15 14:07:25.763 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Node -1 disconnected.
+2025-07-15 14:07:25.763 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2025-07-15 14:07:25.763 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2025-07-15 14:07:26.678 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Node -1 disconnected.
+2025-07-15 14:07:26.678 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2025-07-15 14:07:26.678 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2025-07-15 14:07:27.843 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Node -1 disconnected.
+2025-07-15 14:07:27.844 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2025-07-15 14:07:27.844 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2025-07-15 14:07:29.070 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Node -1 disconnected.
+2025-07-15 14:07:29.071 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2025-07-15 14:07:29.071 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2025-07-15 14:07:30.113 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Node -1 disconnected.
+2025-07-15 14:07:30.113 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2025-07-15 14:07:30.113 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2025-07-15 14:07:31.024 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Node -1 disconnected.
+2025-07-15 14:07:31.025 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2025-07-15 14:07:31.025 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2025-07-15 14:07:32.003 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Node -1 disconnected.
+2025-07-15 14:07:32.003 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2025-07-15 14:07:32.003 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2025-07-15 14:07:32.946 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Node -1 disconnected.
+2025-07-15 14:07:32.946 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2025-07-15 14:07:32.947 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2025-07-15 14:07:33.864 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Node -1 disconnected.
+2025-07-15 14:07:33.866 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2025-07-15 14:07:33.866 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2025-07-15 14:07:34.910 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Node -1 disconnected.
+2025-07-15 14:07:34.911 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Connection to node -1 (localhost/127.0.0.1:9092) could not be established. Broker may not be available.
+2025-07-15 14:07:34.911 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] WARN  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Bootstrap broker localhost:9092 (id: -1 rack: null) disconnected
+2025-07-15 14:07:35.565 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Resetting generation and member id due to: consumer pro-actively leaving the group
+2025-07-15 14:07:35.565 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Request joining group due to: consumer pro-actively leaving the group
+2025-07-15 14:07:35.565 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.s.k.c.DefaultKafkaConsumerFactory$ExtendedKafkaConsumer - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Unsubscribed all topics or patterns and assigned partitions
+2025-07-15 14:07:35.568 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Resetting generation and member id due to: consumer pro-actively leaving the group
+2025-07-15 14:07:35.568 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Request joining group due to: consumer pro-actively leaving the group
+2025-07-15 14:07:35.571 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.kafka.common.metrics.Metrics - Metrics scheduler closed
+2025-07-15 14:07:35.572 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.kafka.common.metrics.Metrics - Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2025-07-15 14:07:35.572 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.kafka.common.metrics.Metrics - Metrics reporters closed
+2025-07-15 14:07:35.578 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.kafka.common.utils.AppInfoParser - App info kafka.consumer for consumer-certificate-processor-1 unregistered
+2025-07-15 14:07:35.579 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.s.k.l.KafkaMessageListenerContainer - certificate-processor: Consumer stopped
+2025-07-15 14:08:20.462 [main] INFO  c.a.e.EasycommProcessorApplication - Starting EasycommProcessorApplication using Java 21.0.7 with PID 18492 (C:\Users\Gustavo Achcar Filho\Desktop\projects\easycomm-monorepo\easycomm-processor\target\classes started by Gustavo Achcar Filho in C:\Users\Gustavo Achcar Filho\Desktop\projects\easycomm-monorepo)
+2025-07-15 14:08:20.464 [main] INFO  c.a.e.EasycommProcessorApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-15 14:08:20.935 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2025-07-15 14:08:20.991 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 50 ms. Found 2 MongoDB repository interfaces.
+2025-07-15 14:08:22.112 [main] INFO  org.mongodb.driver.client - MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "4.11.2"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Microsoft/21.0.7+6-LTS"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, transportSettings=null, streamFactoryFactory=null, commandListeners=[], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@a0c5be, com.mongodb.Jep395RecordCodecProvider@6424e613, com.mongodb.KotlinCodecProvider@14efa279]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null}
+2025-07-15 14:08:22.125 [cluster-ClusterId{value='68768b0653809e01e470ddf1', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=25, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=42217500}
+2025-07-15 14:08:22.906 [main] INFO  o.a.k.c.consumer.ConsumerConfig - ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.include.jmx.reporter = true
+	auto.offset.reset = latest
+	bootstrap.servers = [localhost:9092]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-certificate-processor-1
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = certificate-processor
+	group.instance.id = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.springframework.kafka.support.serializer.JsonDeserializer
+
+2025-07-15 14:08:22.999 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka version: 3.6.2
+2025-07-15 14:08:23.000 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka commitId: c4deed513057c94e
+2025-07-15 14:08:23.000 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka startTimeMs: 1752599302998
+2025-07-15 14:08:23.003 [main] INFO  o.s.k.c.DefaultKafkaConsumerFactory$ExtendedKafkaConsumer - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Subscribed to topic(s): certificates-to-process
+2025-07-15 14:08:23.016 [main] INFO  c.a.e.EasycommProcessorApplication - Started EasycommProcessorApplication in 3.24 seconds (process running for 4.091)
+2025-07-15 14:08:23.324 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  org.apache.kafka.clients.Metadata - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Cluster ID: q7BLmYtDSuCDl1Yb206eiQ
+2025-07-15 14:08:23.325 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Discovered group coordinator localhost:9092 (id: 2147482646 rack: null)
+2025-07-15 14:08:23.328 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] (Re-)joining group
+2025-07-15 14:08:23.364 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Request joining group due to: need to re-join with the given member-id: consumer-certificate-processor-1-58ab6083-ea77-465c-873b-670fabe737c5
+2025-07-15 14:08:23.365 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Request joining group due to: rebalance failed due to 'The group member needs to have a valid member id before actually entering a consumer group.' (MemberIdRequiredException)
+2025-07-15 14:08:23.365 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] (Re-)joining group
+2025-07-15 14:08:26.594 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Successfully joined group with generation Generation{generationId=29, memberId='consumer-certificate-processor-1-58ab6083-ea77-465c-873b-670fabe737c5', protocol='range'}
+2025-07-15 14:08:26.606 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Finished assignment for group at generation 29: {consumer-certificate-processor-1-58ab6083-ea77-465c-873b-670fabe737c5=Assignment(partitions=[certificates-to-process-0])}
+2025-07-15 14:08:26.692 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Successfully synced group in generation Generation{generationId=29, memberId='consumer-certificate-processor-1-58ab6083-ea77-465c-873b-670fabe737c5', protocol='range'}
+2025-07-15 14:08:26.693 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Notifying assignor about the new Assignment(partitions=[certificates-to-process-0])
+2025-07-15 14:08:26.699 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Adding newly assigned partitions: certificates-to-process-0
+2025-07-15 14:08:26.728 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Setting offset for partition certificates-to-process-0 to the committed offset FetchPosition{offset=8, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1001 rack: null)], epoch=0}}
+2025-07-15 14:08:26.729 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.s.k.l.KafkaMessageListenerContainer - certificate-processor: partitions assigned: [certificates-to-process-0]
+2025-07-15 14:10:57.535 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Revoke previously assigned partitions certificates-to-process-0
+2025-07-15 14:10:57.536 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.s.k.l.KafkaMessageListenerContainer - certificate-processor: partitions revoked: [certificates-to-process-0]
+2025-07-15 14:10:57.537 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Member consumer-certificate-processor-1-58ab6083-ea77-465c-873b-670fabe737c5 sending LeaveGroup request to coordinator localhost:9092 (id: 2147482646 rack: null) due to the consumer unsubscribed from all topics
+2025-07-15 14:10:57.539 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Resetting generation and member id due to: consumer pro-actively leaving the group
+2025-07-15 14:10:57.539 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Request joining group due to: consumer pro-actively leaving the group
+2025-07-15 14:10:57.540 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.s.k.c.DefaultKafkaConsumerFactory$ExtendedKafkaConsumer - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Unsubscribed all topics or patterns and assigned partitions
+2025-07-15 14:10:57.543 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Resetting generation and member id due to: consumer pro-actively leaving the group
+2025-07-15 14:10:57.543 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Request joining group due to: consumer pro-actively leaving the group
+2025-07-15 14:10:57.948 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.kafka.common.metrics.Metrics - Metrics scheduler closed
+2025-07-15 14:10:57.948 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.kafka.common.metrics.Metrics - Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2025-07-15 14:10:57.948 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.kafka.common.metrics.Metrics - Metrics reporters closed
+2025-07-15 14:10:57.959 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.kafka.common.utils.AppInfoParser - App info kafka.consumer for consumer-certificate-processor-1 unregistered
+2025-07-15 14:10:57.960 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.s.k.l.KafkaMessageListenerContainer - certificate-processor: Consumer stopped
+2025-07-15 14:28:49.768 [main] INFO  c.a.e.EasycommProcessorApplication - Starting EasycommProcessorApplication using Java 21.0.7 with PID 25092 (C:\Users\Gustavo Achcar Filho\Desktop\projects\easycomm-monorepo\easycomm-processor\target\classes started by Gustavo Achcar Filho in C:\Users\Gustavo Achcar Filho\Desktop\projects\easycomm-monorepo)
+2025-07-15 14:28:49.773 [main] INFO  c.a.e.EasycommProcessorApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-15 14:28:50.272 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2025-07-15 14:28:50.366 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 89 ms. Found 2 MongoDB repository interfaces.
+2025-07-15 14:28:51.850 [main] INFO  org.mongodb.driver.client - MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "4.11.2"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Microsoft/21.0.7+6-LTS"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, transportSettings=null, streamFactoryFactory=null, commandListeners=[], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@5b1c32e4, com.mongodb.Jep395RecordCodecProvider@2bab618, com.mongodb.KotlinCodecProvider@48bc2fce]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null}
+2025-07-15 14:28:51.872 [cluster-ClusterId{value='68768fd3788d741182668998', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=25, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=30813800}
+2025-07-15 14:28:52.873 [main] INFO  o.a.k.c.consumer.ConsumerConfig - ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.include.jmx.reporter = true
+	auto.offset.reset = latest
+	bootstrap.servers = [localhost:9092]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-certificate-processor-1
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = certificate-processor
+	group.instance.id = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.springframework.kafka.support.serializer.JsonDeserializer
+
+2025-07-15 14:28:52.973 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka version: 3.6.2
+2025-07-15 14:28:52.973 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka commitId: c4deed513057c94e
+2025-07-15 14:28:52.973 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka startTimeMs: 1752600532972
+2025-07-15 14:28:52.979 [main] INFO  o.s.k.c.DefaultKafkaConsumerFactory$ExtendedKafkaConsumer - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Subscribed to topic(s): certificates-to-process
+2025-07-15 14:28:52.997 [main] INFO  c.a.e.EasycommProcessorApplication - Started EasycommProcessorApplication in 4.042 seconds (process running for 4.953)
+2025-07-15 14:28:53.407 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  org.apache.kafka.clients.Metadata - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Cluster ID: q7BLmYtDSuCDl1Yb206eiQ
+2025-07-15 14:28:53.409 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Discovered group coordinator localhost:9092 (id: 2147482646 rack: null)
+2025-07-15 14:28:53.413 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] (Re-)joining group
+2025-07-15 14:28:53.435 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Request joining group due to: need to re-join with the given member-id: consumer-certificate-processor-1-72c26b40-e1b7-4842-b0b7-ab7913649f2d
+2025-07-15 14:28:53.436 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Request joining group due to: rebalance failed due to 'The group member needs to have a valid member id before actually entering a consumer group.' (MemberIdRequiredException)
+2025-07-15 14:28:53.436 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] (Re-)joining group
+2025-07-15 14:28:56.746 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Successfully joined group with generation Generation{generationId=31, memberId='consumer-certificate-processor-1-72c26b40-e1b7-4842-b0b7-ab7913649f2d', protocol='range'}
+2025-07-15 14:28:56.753 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Finished assignment for group at generation 31: {consumer-certificate-processor-1-72c26b40-e1b7-4842-b0b7-ab7913649f2d=Assignment(partitions=[certificates-to-process-0])}
+2025-07-15 14:28:56.775 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Successfully synced group in generation Generation{generationId=31, memberId='consumer-certificate-processor-1-72c26b40-e1b7-4842-b0b7-ab7913649f2d', protocol='range'}
+2025-07-15 14:28:56.778 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Notifying assignor about the new Assignment(partitions=[certificates-to-process-0])
+2025-07-15 14:28:56.783 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Adding newly assigned partitions: certificates-to-process-0
+2025-07-15 14:28:56.814 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Setting offset for partition certificates-to-process-0 to the committed offset FetchPosition{offset=8, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1001 rack: null)], epoch=0}}
+2025-07-15 14:28:56.815 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.s.k.l.KafkaMessageListenerContainer - certificate-processor: partitions assigned: [certificates-to-process-0]
+2025-07-15 14:31:29.516 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Revoke previously assigned partitions certificates-to-process-0
+2025-07-15 14:31:29.517 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.s.k.l.KafkaMessageListenerContainer - certificate-processor: partitions revoked: [certificates-to-process-0]
+2025-07-15 14:31:29.518 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Member consumer-certificate-processor-1-72c26b40-e1b7-4842-b0b7-ab7913649f2d sending LeaveGroup request to coordinator localhost:9092 (id: 2147482646 rack: null) due to the consumer unsubscribed from all topics
+2025-07-15 14:31:29.519 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Resetting generation and member id due to: consumer pro-actively leaving the group
+2025-07-15 14:31:29.519 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Request joining group due to: consumer pro-actively leaving the group
+2025-07-15 14:31:29.519 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.s.k.c.DefaultKafkaConsumerFactory$ExtendedKafkaConsumer - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Unsubscribed all topics or patterns and assigned partitions
+2025-07-15 14:31:29.521 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Resetting generation and member id due to: consumer pro-actively leaving the group
+2025-07-15 14:31:29.523 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Request joining group due to: consumer pro-actively leaving the group
+2025-07-15 14:31:29.783 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.kafka.common.metrics.Metrics - Metrics scheduler closed
+2025-07-15 14:31:29.784 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.kafka.common.metrics.Metrics - Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2025-07-15 14:31:29.802 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.kafka.common.metrics.Metrics - Metrics reporters closed
+2025-07-15 14:31:29.885 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.kafka.common.utils.AppInfoParser - App info kafka.consumer for consumer-certificate-processor-1 unregistered
+2025-07-15 14:31:29.897 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.s.k.l.KafkaMessageListenerContainer - certificate-processor: Consumer stopped
+2025-07-15 14:36:11.089 [main] INFO  c.a.e.EasycommProcessorApplication - Starting EasycommProcessorApplication using Java 21.0.7 with PID 23860 (C:\Users\Gustavo Achcar Filho\Desktop\projects\easycomm-monorepo\easycomm-processor\target\classes started by Gustavo Achcar Filho in C:\Users\Gustavo Achcar Filho\Desktop\projects\easycomm-monorepo)
+2025-07-15 14:36:11.091 [main] INFO  c.a.e.EasycommProcessorApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-15 14:36:11.667 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2025-07-15 14:36:11.715 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 44 ms. Found 2 MongoDB repository interfaces.
+2025-07-15 14:36:13.471 [main] INFO  org.mongodb.driver.client - MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "4.11.2"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Microsoft/21.0.7+6-LTS"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, transportSettings=null, streamFactoryFactory=null, commandListeners=[], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@24fba488, com.mongodb.Jep395RecordCodecProvider@73a6cc79, com.mongodb.KotlinCodecProvider@5a4d4f9c]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null}
+2025-07-15 14:36:13.489 [cluster-ClusterId{value='6876918d5dc71571fe72e4eb', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=25, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=29630100}
+2025-07-15 14:36:14.572 [main] INFO  o.a.k.c.consumer.ConsumerConfig - ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.include.jmx.reporter = true
+	auto.offset.reset = latest
+	bootstrap.servers = [localhost:9092]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-certificate-processor-1
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = certificate-processor
+	group.instance.id = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.springframework.kafka.support.serializer.JsonDeserializer
+
+2025-07-15 14:36:14.705 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka version: 3.6.2
+2025-07-15 14:36:14.706 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka commitId: c4deed513057c94e
+2025-07-15 14:36:14.707 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka startTimeMs: 1752600974703
+2025-07-15 14:36:14.710 [main] INFO  o.s.k.c.DefaultKafkaConsumerFactory$ExtendedKafkaConsumer - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Subscribed to topic(s): certificates-to-process
+2025-07-15 14:36:14.729 [main] INFO  c.a.e.EasycommProcessorApplication - Started EasycommProcessorApplication in 4.414 seconds (process running for 5.336)
+2025-07-15 14:36:15.113 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  org.apache.kafka.clients.Metadata - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Cluster ID: q7BLmYtDSuCDl1Yb206eiQ
+2025-07-15 14:36:15.114 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Discovered group coordinator localhost:9092 (id: 2147482646 rack: null)
+2025-07-15 14:36:15.119 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] (Re-)joining group
+2025-07-15 14:36:15.140 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Request joining group due to: need to re-join with the given member-id: consumer-certificate-processor-1-f3c985e3-2750-4fe8-a844-f4f7c0debd52
+2025-07-15 14:36:15.141 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Request joining group due to: rebalance failed due to 'The group member needs to have a valid member id before actually entering a consumer group.' (MemberIdRequiredException)
+2025-07-15 14:36:15.141 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] (Re-)joining group
+2025-07-15 14:36:18.393 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Successfully joined group with generation Generation{generationId=33, memberId='consumer-certificate-processor-1-f3c985e3-2750-4fe8-a844-f4f7c0debd52', protocol='range'}
+2025-07-15 14:36:18.403 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Finished assignment for group at generation 33: {consumer-certificate-processor-1-f3c985e3-2750-4fe8-a844-f4f7c0debd52=Assignment(partitions=[certificates-to-process-0])}
+2025-07-15 14:36:18.427 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Successfully synced group in generation Generation{generationId=33, memberId='consumer-certificate-processor-1-f3c985e3-2750-4fe8-a844-f4f7c0debd52', protocol='range'}
+2025-07-15 14:36:18.428 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Notifying assignor about the new Assignment(partitions=[certificates-to-process-0])
+2025-07-15 14:36:18.431 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Adding newly assigned partitions: certificates-to-process-0
+2025-07-15 14:36:18.469 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Setting offset for partition certificates-to-process-0 to the committed offset FetchPosition{offset=8, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1001 rack: null)], epoch=0}}
+2025-07-15 14:36:18.472 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.s.k.l.KafkaMessageListenerContainer - certificate-processor: partitions assigned: [certificates-to-process-0]
+2025-07-15 14:36:49.835 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Revoke previously assigned partitions certificates-to-process-0
+2025-07-15 14:36:49.836 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.s.k.l.KafkaMessageListenerContainer - certificate-processor: partitions revoked: [certificates-to-process-0]
+2025-07-15 14:36:49.837 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Member consumer-certificate-processor-1-f3c985e3-2750-4fe8-a844-f4f7c0debd52 sending LeaveGroup request to coordinator localhost:9092 (id: 2147482646 rack: null) due to the consumer unsubscribed from all topics
+2025-07-15 14:36:49.838 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Resetting generation and member id due to: consumer pro-actively leaving the group
+2025-07-15 14:36:49.838 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Request joining group due to: consumer pro-actively leaving the group
+2025-07-15 14:36:49.838 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.s.k.c.DefaultKafkaConsumerFactory$ExtendedKafkaConsumer - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Unsubscribed all topics or patterns and assigned partitions
+2025-07-15 14:36:49.841 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Resetting generation and member id due to: consumer pro-actively leaving the group
+2025-07-15 14:36:49.841 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Request joining group due to: consumer pro-actively leaving the group
+2025-07-15 14:36:50.202 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.kafka.common.metrics.Metrics - Metrics scheduler closed
+2025-07-15 14:36:50.202 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.kafka.common.metrics.Metrics - Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2025-07-15 14:36:50.203 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.kafka.common.metrics.Metrics - Metrics reporters closed
+2025-07-15 14:36:50.232 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.kafka.common.utils.AppInfoParser - App info kafka.consumer for consumer-certificate-processor-1 unregistered
+2025-07-15 14:36:50.234 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.s.k.l.KafkaMessageListenerContainer - certificate-processor: Consumer stopped
+2025-07-15 17:29:57.762 [main] INFO  c.a.e.EasycommProcessorApplication - Starting EasycommProcessorApplication using Java 21.0.7 with PID 28312 (C:\Users\Gustavo Achcar Filho\Desktop\projects\easycomm-monorepo\easycomm-processor\target\classes started by Gustavo Achcar Filho in C:\Users\Gustavo Achcar Filho\Desktop\projects\easycomm-monorepo)
+2025-07-15 17:29:57.766 [main] INFO  c.a.e.EasycommProcessorApplication - No active profile set, falling back to 1 default profile: "default"
+2025-07-15 17:29:58.222 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2025-07-15 17:29:58.264 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 38 ms. Found 2 MongoDB repository interfaces.
+2025-07-15 17:29:59.385 [main] INFO  org.mongodb.driver.client - MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "4.11.2"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Microsoft/21.0.7+6-LTS"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, transportSettings=null, streamFactoryFactory=null, commandListeners=[], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@2416c658, com.mongodb.Jep395RecordCodecProvider@6d5f4900, com.mongodb.KotlinCodecProvider@1e40fbb3]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null}
+2025-07-15 17:29:59.405 [cluster-ClusterId{value='6876ba474425b90e58ad5fcf', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=25, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=35755400}
+2025-07-15 17:30:00.332 [main] INFO  o.a.k.c.consumer.ConsumerConfig - ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.include.jmx.reporter = true
+	auto.offset.reset = latest
+	bootstrap.servers = [localhost:9092]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-certificate-processor-1
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = certificate-processor
+	group.instance.id = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.springframework.kafka.support.serializer.JsonDeserializer
+
+2025-07-15 17:30:00.521 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka version: 3.6.2
+2025-07-15 17:30:00.525 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka commitId: c4deed513057c94e
+2025-07-15 17:30:00.525 [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka startTimeMs: 1752611400517
+2025-07-15 17:30:00.528 [main] INFO  o.s.k.c.DefaultKafkaConsumerFactory$ExtendedKafkaConsumer - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Subscribed to topic(s): certificates-to-process
+2025-07-15 17:30:00.562 [main] INFO  c.a.e.EasycommProcessorApplication - Started EasycommProcessorApplication in 3.474 seconds (process running for 4.311)
+2025-07-15 17:30:00.987 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  org.apache.kafka.clients.Metadata - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Cluster ID: q7BLmYtDSuCDl1Yb206eiQ
+2025-07-15 17:30:00.988 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Discovered group coordinator localhost:9092 (id: 2147482646 rack: null)
+2025-07-15 17:30:00.991 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] (Re-)joining group
+2025-07-15 17:30:01.022 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Request joining group due to: need to re-join with the given member-id: consumer-certificate-processor-1-5cff7ed6-fe05-4d49-bf47-70299a72f8cc
+2025-07-15 17:30:01.023 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Request joining group due to: rebalance failed due to 'The group member needs to have a valid member id before actually entering a consumer group.' (MemberIdRequiredException)
+2025-07-15 17:30:01.023 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] (Re-)joining group
+2025-07-15 17:30:04.334 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Successfully joined group with generation Generation{generationId=35, memberId='consumer-certificate-processor-1-5cff7ed6-fe05-4d49-bf47-70299a72f8cc', protocol='range'}
+2025-07-15 17:30:04.346 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Finished assignment for group at generation 35: {consumer-certificate-processor-1-5cff7ed6-fe05-4d49-bf47-70299a72f8cc=Assignment(partitions=[certificates-to-process-0])}
+2025-07-15 17:30:04.374 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Successfully synced group in generation Generation{generationId=35, memberId='consumer-certificate-processor-1-5cff7ed6-fe05-4d49-bf47-70299a72f8cc', protocol='range'}
+2025-07-15 17:30:04.376 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Notifying assignor about the new Assignment(partitions=[certificates-to-process-0])
+2025-07-15 17:30:04.380 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Adding newly assigned partitions: certificates-to-process-0
+2025-07-15 17:30:04.399 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Setting offset for partition certificates-to-process-0 to the committed offset FetchPosition{offset=8, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1001 rack: null)], epoch=0}}
+2025-07-15 17:30:04.400 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.s.k.l.KafkaMessageListenerContainer - certificate-processor: partitions assigned: [certificates-to-process-0]
+2025-07-15 17:36:51.952 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Revoke previously assigned partitions certificates-to-process-0
+2025-07-15 17:36:51.953 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.s.k.l.KafkaMessageListenerContainer - certificate-processor: partitions revoked: [certificates-to-process-0]
+2025-07-15 17:36:51.953 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Member consumer-certificate-processor-1-5cff7ed6-fe05-4d49-bf47-70299a72f8cc sending LeaveGroup request to coordinator localhost:9092 (id: 2147482646 rack: null) due to the consumer unsubscribed from all topics
+2025-07-15 17:36:51.954 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Resetting generation and member id due to: consumer pro-actively leaving the group
+2025-07-15 17:36:51.954 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Request joining group due to: consumer pro-actively leaving the group
+2025-07-15 17:36:51.954 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.s.k.c.DefaultKafkaConsumerFactory$ExtendedKafkaConsumer - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Unsubscribed all topics or patterns and assigned partitions
+2025-07-15 17:36:51.956 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Resetting generation and member id due to: consumer pro-actively leaving the group
+2025-07-15 17:36:51.956 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Request joining group due to: consumer pro-actively leaving the group
+2025-07-15 17:36:51.973 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.kafka.common.metrics.Metrics - Metrics scheduler closed
+2025-07-15 17:36:51.973 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.kafka.common.metrics.Metrics - Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2025-07-15 17:36:51.974 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.kafka.common.metrics.Metrics - Metrics reporters closed
+2025-07-15 17:36:51.980 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.kafka.common.utils.AppInfoParser - App info kafka.consumer for consumer-certificate-processor-1 unregistered
+2025-07-15 17:36:51.980 [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.s.k.l.KafkaMessageListenerContainer - certificate-processor: Consumer stopped

@@ -169,3 +169,58 @@ export const getAllOpportunities = async () => {
   
     return response.json();
   };
+
+  export const getCertificateViewUrl = async (certificateId: string) => {
+    const token = localStorage.getItem('authToken');
+  
+    const response = await fetch(`${API_URL}/certificate/${certificateId}/view-url`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      },
+    });
+  
+    if (!response.ok) {
+      throw new Error('Falha ao obter a URL do documento.');
+    }
+  
+    const data = await response.json();
+    return data.url; // A API retorna { "url": "..." }
+  };
+
+  export const registerUser = async (userData: object) => {
+    // Agora a função simplesmente envia os dados que recebe, incluindo a role.
+    const response = await fetch(`${API_URL}/auth/register`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(userData),
+    });
+  
+    if (!response.ok) {
+      if (response.status === 400) {
+        throw new Error('Email ou CPF já cadastrado.');
+      }
+      throw new Error('Falha ao tentar realizar o cadastro.');
+    }
+  
+    return;
+  };
+
+  export const getOpportunityById = async (opportunityId: string) => {
+    const token = localStorage.getItem('authToken');
+  
+    const response = await fetch(`${API_URL}/opportunity/${opportunityId}`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      },
+    });
+  
+    if (!response.ok) {
+      throw new Error('Falha ao buscar os detalhes da oportunidade.');
+    }
+  
+    return response.json();
+  };

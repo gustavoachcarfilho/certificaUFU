@@ -9,6 +9,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { useToast } from '@/hooks/use-toast'
 import { Eye, EyeOff, LogIn } from 'lucide-react'
 import { login } from '@/lib/api'
+import Link from 'next/link';
 
 // Função auxiliar para decodificar o token JWT de forma segura
 function parseJwt(token: string) {
@@ -109,6 +110,12 @@ export function LoginForm() {
                     {isLoading ? 'Entrando...' : <><LogIn className="w-4 h-4 mr-2" />Entrar</>}
                 </Button>
             </form>
+            <div className="mt-4 text-center text-sm">
+          Não tem uma conta?{' '}
+          <Link href="/register" className="underline">
+            Registre-se
+          </Link>
+        </div>
         </CardContent>
     </Card>
   )
