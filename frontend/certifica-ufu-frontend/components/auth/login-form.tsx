@@ -6,158 +6,110 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { useToast } from '@/hooks/use-toast'
 import { Eye, EyeOff, LogIn } from 'lucide-react'
+import { login } from '@/lib/api'
+
+// Função auxiliar para decodificar o token JWT de forma segura
+function parseJwt(token: string) {
+  try {
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+
+    return JSON.parse(jsonPayload);
+  } catch (e) {
+    console.error("Failed to parse JWT:", e);
+    return null;
+  }
+}
 
 export function LoginForm() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [role, setRole] = useState('')
-  const [showPassword, setShowPassword] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
-  const [errors, setErrors] = useState<{email?: string, password?: string, role?: string}>({})
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [errors, setErrors] = useState<{email?: string, password?: string}>({});
   
-  const router = useRouter()
-  const { toast } = useToast()
+  const router = useRouter();
+  const { toast } = useToast();
 
   const validateForm = () => {
-    const newErrors: {email?: string, password?: string, role?: string} = {}
-    
-    if (!email) {
-      newErrors.email = 'Email é obrigatório'
-    } else if (!/\S+@\S+\.\S+/.test(email)) {
-      newErrors.email = 'Email inválido'
-    }
-    
-    if (!password) {
-      newErrors.password = 'Senha é obrigatória'
-    } else if (password.length < 6) {
-      newErrors.password = 'Senha deve ter pelo menos 6 caracteres'
-    }
-    
-    if (!role) {
-      newErrors.role = 'Selecione um tipo de usuário'
-    }
-    
-    setErrors(newErrors)
-    return Object.keys(newErrors).length === 0
+    const newErrors: {email?: string, password?: string} = {};
+    if (!email) newErrors.email = 'Email é obrigatório';
+    if (!password) newErrors.password = 'Senha é obrigatória';
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
+    if (!validateForm()) return;
+    setIsLoading(true);
     
-    if (!validateForm()) return
-    
-    setIsLoading(true)
-    
-    // Simulate API call
-    setTimeout(() => {
-      setIsLoading(false)
+    try {
+      // 1. Faz o login e obtém o token
+      const data = await login(email, password);
+      localStorage.setItem('authToken', data.token);
+
+      // 2. Decodifica o token para ler as informações ("claims")
+      const tokenPayload = parseJwt(data.token);
+      const userRole = tokenPayload?.role; // Pega a role que o backend inseriu
+
       toast({
         title: "Login realizado com sucesso!",
-        description: `Bem-vindo(a) como ${role}`,
-      })
+        description: `Bem-vindo(a) como ${userRole || 'usuário'}.`,
+      });
       
-      // Redirect based on role
-      if (role === 'student') {
-        router.push('/student/dashboard')
+      // 3. Lógica de redirecionamento baseada na role
+      if (userRole === 'ADMIN') {
+        router.push('/admin/dashboard');
       } else {
-        router.push('/admin/dashboard')
+        router.push('/student/dashboard');
       }
-    }, 1500)
+
+    } catch (error: any) {
+      toast({
+        title: "Erro no login",
+        description: error.message || "Credenciais inválidas ou erro no servidor.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
-    <Card className="w-full shadow-xl border-0 bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm animate-fade-in">
-      <CardHeader className="space-y-1 text-center">
-        <CardTitle className="text-2xl font-bold">Entrar</CardTitle>
-        <CardDescription>
-          Digite suas credenciais para acessar o sistema
-        </CardDescription>
-      </CardHeader>
-      <CardContent>
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
-            <Input
-              id="email"
-              type="email"
-              placeholder="seu.email@ufu.br"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className={errors.email ? 'border-red-500' : ''}
-            />
-            {errors.email && (
-              <p className="text-sm text-red-500">{errors.email}</p>
-            )}
-          </div>
-          
-          <div className="space-y-2">
-            <Label htmlFor="password">Senha</Label>
-            <div className="relative">
-              <Input
-                id="password"
-                type={showPassword ? 'text' : 'password'}
-                placeholder="Digite sua senha"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className={errors.password ? 'border-red-500 pr-10' : 'pr-10'}
-              />
-              <Button
-                type="button"
-                variant="ghost"
-                size="sm"
-                className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
-                onClick={() => setShowPassword(!showPassword)}
-              >
-                {showPassword ? (
-                  <EyeOff className="h-4 w-4 text-gray-400" />
-                ) : (
-                  <Eye className="h-4 w-4 text-gray-400" />
-                )}
-              </Button>
-            </div>
-            {errors.password && (
-              <p className="text-sm text-red-500">{errors.password}</p>
-            )}
-          </div>
-          
-          <div className="space-y-2">
-            <Label htmlFor="role">Tipo de Usuário</Label>
-            <Select value={role} onValueChange={setRole}>
-              <SelectTrigger className={errors.role ? 'border-red-500' : ''}>
-                <SelectValue placeholder="Selecione seu tipo de usuário" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="student">Estudante</SelectItem>
-                <SelectItem value="admin">Administrador</SelectItem>
-              </SelectContent>
-            </Select>
-            {errors.role && (
-              <p className="text-sm text-red-500">{errors.role}</p>
-            )}
-          </div>
-          
-          <Button 
-            type="submit" 
-            className="w-full mt-6 h-11 text-base font-medium transition-all duration-200 hover:shadow-lg"
-            disabled={isLoading}
-          >
-            {isLoading ? (
-              <div className="flex items-center space-x-2">
-                <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                <span>Entrando...</span>
-              </div>
-            ) : (
-              <div className="flex items-center space-x-2">
-                <LogIn className="w-4 h-4" />
-                <span>Entrar</span>
-              </div>
-            )}
-          </Button>
-        </form>
-      </CardContent>
+    // O JSX do formulário continua o mesmo
+    <Card className="w-full shadow-xl">
+        <CardHeader className="text-center">
+            <CardTitle className="text-2xl font-bold">Entrar</CardTitle>
+            <CardDescription>
+                Digite suas credenciais para acessar
+            </CardDescription>
+        </CardHeader>
+        <CardContent>
+            <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="space-y-2">
+                    <Label htmlFor="email">Email</Label>
+                    <Input id="email" type="email" placeholder="seu.email@ufu.br" value={email} onChange={(e) => setEmail(e.target.value)} />
+                </div>
+                <div className="space-y-2">
+                    <Label htmlFor="password">Senha</Label>
+                    <div className="relative">
+                        <Input id="password" type={showPassword ? 'text' : 'password'} placeholder="Digite sua senha" value={password} onChange={(e) => setPassword(e.target.value)} />
+                        <Button type="button" variant="ghost" size="sm" className="absolute right-0 top-0 h-full px-3" onClick={() => setShowPassword(!showPassword)}>
+                            {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                        </Button>
+                    </div>
+                </div>
+                <Button type="submit" className="w-full mt-6" disabled={isLoading}>
+                    {isLoading ? 'Entrando...' : <><LogIn className="w-4 h-4 mr-2" />Entrar</>}
+                </Button>
+            </form>
+        </CardContent>
     </Card>
   )
 }
