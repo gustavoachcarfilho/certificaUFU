@@ -51,3 +51,11 @@ Thumbs.db
 *.env
 application.properties
 *.csv
+
+/frontend/certifica-ufu-frontend/node_modules
+/frontend/certifica-ufu-frontend/.pnpm-store
+/frontend/certifica-ufu-frontend/.next/
+/frontend/certifica-ufu-frontend/out/
+/frontend/certifica-ufu-frontend/.vercel
+/frontend/certifica-ufu-frontend/*.tsbuildinfo
+/frontend/certifica-ufu-frontend/next-env.d.ts
