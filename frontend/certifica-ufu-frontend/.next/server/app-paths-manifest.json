@@ -1,9 +1,8 @@
 {
   "/student/dashboard/page": "app/student/dashboard/page.js",
   "/page": "app/page.js",
-  "/admin/dashboard/page": "app/admin/dashboard/page.js",
-  "/admin/opportunities/create/page": "app/admin/opportunities/create/page.js",
+  "/student/documents/page": "app/student/documents/page.js",
   "/admin/opportunities/[id]/page": "app/admin/opportunities/[id]/page.js",
-  "/student/submit-document/page": "app/student/submit-document/page.js",
-  "/student/documents/page": "app/student/documents/page.js"
+  "/admin/opportunities/create/page": "app/admin/opportunities/create/page.js",
+  "/admin/dashboard/page": "app/admin/dashboard/page.js"
 }

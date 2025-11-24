@@ -6,6 +6,12 @@ RUN mvn clean package -DskipTests
 
 FROM eclipse-temurin:21-jre
 WORKDIR /app
+
+RUN apt-get update && \
+    apt-get install -y tesseract-ocr tesseract-ocr-por && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
 COPY --from=build /app/target/*.jar easycomm.jar
 
 ARG AWS_ACCESS_KEY_ID

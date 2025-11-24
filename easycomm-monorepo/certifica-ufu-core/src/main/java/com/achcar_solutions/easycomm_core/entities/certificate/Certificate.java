@@ -78,4 +78,8 @@ public class Certificate {
     @Nullable
     @Schema(description = "Motivo da rejeição, caso o status seja DENIED.")
     private String rejectionReason;
+
+    @Nullable
+    @Schema(description = "Texto bruto extraído do arquivo via OCR (Tesseract).")
+    private String ocrRawText;
 }

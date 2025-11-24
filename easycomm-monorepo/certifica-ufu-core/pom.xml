@@ -3,13 +3,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.achcar-solutions</groupId>
-        <artifactId>certifica-ufu-base</artifactId>
+        <groupId>com.ufu-solutions</groupId>
+        <artifactId>certifica-ufu-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
     <artifactId>certifica-ufu-core</artifactId>
-    <name>easycomm-core</name>
+    <name>certifica-ufu-core</name>
 
     <dependencies>
         <dependency>

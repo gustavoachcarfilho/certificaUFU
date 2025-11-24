@@ -3,18 +3,19 @@
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.achcar-solutions</groupId>
-		<artifactId>certifica-ufu-base</artifactId>
+		<groupId>com.ufu-solutions</groupId>
+		<artifactId>certifica-ufu-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
 	<artifactId>certifica-ufu-api</artifactId>
-	<name>easycomm-api</name>
+	<name>certifica-ufu-api</name>
 
 	<dependencies>
 		<dependency>
-			<groupId>com.achcar-solutions</groupId>
-			<artifactId>easycomm-core</artifactId>
+			<groupId>com.ufu-solutions</groupId>
+			<artifactId>certifica-ufu-core</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -51,6 +52,15 @@
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
 		</dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot</artifactId>
+        </dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot</artifactId>
+		</dependency>
+		
 	</dependencies>
 
 	<build>

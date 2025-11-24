@@ -9,11 +9,11 @@
         <relativePath/>
     </parent>
 
-    <groupId>com.achcar-solutions</groupId>
-    <artifactId>certifica-ufu-base</artifactId>
+    <groupId>com.ufu-solutions</groupId>
+    <artifactId>certifica-ufu-parent</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <name>easycomm-parent</name>
+    <name>certifica-ufu-parent</name>
 
     <properties>
         <java.version>21</java.version>
