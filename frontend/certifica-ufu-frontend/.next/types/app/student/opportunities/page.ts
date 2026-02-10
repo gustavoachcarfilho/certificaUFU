@@ -1,4 +1,4 @@
-// File: C:\Users\Gustavo Achcar Filho\Desktop\projects\Certifica UFU - PDSI1\certificaUFU\frontend\certifica-ufu-frontend\app\student\opportunities\page.tsx
+// File: C:\Users\guilherme_sankhya\Desktop\santo_certifica\certificaUFU\frontend\certifica-ufu-frontend\app\student\opportunities\page.tsx
 import * as entry from '../../../../../app/student/opportunities/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

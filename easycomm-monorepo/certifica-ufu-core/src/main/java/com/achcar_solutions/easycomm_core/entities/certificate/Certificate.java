@@ -82,4 +82,37 @@ public class Certificate {
     @Nullable
     @Schema(description = "Texto bruto extraído do arquivo via OCR (Tesseract).")
     private String ocrRawText;
+
+    // ✅ Campos extraídos pela IA (Gemini)
+    @Nullable
+    @Schema(description = "Nome do participante extraído pela IA do certificado.")
+    private String aiParticipantName;
+
+    @Nullable
+    @Schema(description = "Instituição emissora identificada pela IA.")
+    private String aiInstitution;
+
+    @Nullable
+    @Schema(description = "Data do evento/curso extraída pela IA.", example = "2025-01-27")
+    private String aiEventDate;
+
+    @Nullable
+    @Schema(description = "Carga horária detectada pela IA (em horas).", example = "16")
+    private Integer aiDetectedWorkload;
+
+    @Nullable
+    @Schema(description = "Indica se há divergência >20% entre carga horária informada e detectada.")
+    private Boolean aiWorkloadMismatch;
+
+    @Nullable
+    @Schema(description = "Nível de confiança da extração pela IA (0.0 a 1.0).", example = "0.95")
+    private Double aiConfidenceScore;
+
+    @Nullable
+    @Schema(description = "Timestamp do processamento pela IA.")
+    private LocalDateTime aiProcessedAt;
+
+    @Nullable
+    @Schema(description = "Mensagem de erro caso o processamento pela IA falhe.")
+    private String aiErrorMessage;
 }

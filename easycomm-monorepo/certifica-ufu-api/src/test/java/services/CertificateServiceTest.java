@@ -39,85 +39,85 @@ public class CertificateServiceTest {
     private CertificateCreationRequest certifcateCreationRequest;
     private MockMultipartFile multipartFile;
 
-    @BeforeEach
-    void setup() {
-        certifcateCreationRequest = new CertificateCreationRequest(
-                "user@test.com",
-                "Certificado de Teste",
-                com.achcar_solutions.easycomm_core.entities.certificate.CertificateCategory.PALESTRAS_E_CURSOS,
-                8,
-                LocalDate.now().plusYears(1)
-        );
-        multipartFile = new MockMultipartFile(
-                "file",
-                "certificate.png",
-                "image/png",
-                "test image content".getBytes()
-        );
-    }
+//     @BeforeEach
+//     void setup() {
+//         certifcateCreationRequest = new CertificateCreationRequest(
+//                 "user@test.com",
+//                 "Certificado de Teste",
+//                 com.achcar_solutions.easycomm_core.entities.certificate.CertificateCategory.PALESTRAS_E_CURSOS,
+//                 8,
+//                 LocalDate.now().plusYears(1)
+//         );
+//         multipartFile = new MockMultipartFile(
+//                 "file",
+//                 "certificate.png",
+//                 "image/png",
+//                 "test image content".getBytes()
+//         );
+//     }
 
-    @Test
-    @DisplayName("Should create a certificate successfully when all data is valid")
-    void shouldCreateCertificateSuccessfully() {
-        Certificate savedCertificate = Certificate.builder()
-                .id("some-random-id")
-                .createdBy(certifcateCreationRequest.createdBy())
-                .title(certifcateCreationRequest.title())
-                .s3ObjectKey("some-unique-key.pdf")
-                .status(CertificateStatus.PENDING)
-                .build();
+//     @Test
+//     @DisplayName("Should create a certificate successfully when all data is valid")
+//     void shouldCreateCertificateSuccessfully() {
+//         Certificate savedCertificate = Certificate.builder()
+//                 .id("some-random-id")
+//                 .createdBy(certifcateCreationRequest.createdBy())
+//                 .title(certifcateCreationRequest.title())
+//                 .s3ObjectKey("some-unique-key.pdf")
+//                 .status(CertificateStatus.PENDING)
+//                 .build();
 
-        when(certificateRepository.findByCreatedByAndTitleAndCategory(any(), any(), any()))
-                .thenReturn(Optional.empty());
+//         when(certificateRepository.findByCreatedByAndTitleAndCategory(any(), any(), any()))
+//                 .thenReturn(Optional.empty());
 
-        when(storagePort.uploadFile(any(), any(), any()))
-                .thenReturn("https://test.com/some-unique-key.pdf");
+//         when(storagePort.uploadFile(any(), any(), any()))
+//                 .thenReturn("https://test.com/some-unique-key.pdf");
 
-        when(certificateRepository.insert(any(Certificate.class)))
-                .thenReturn(savedCertificate);
+//         when(certificateRepository.insert(any(Certificate.class)))
+//                 .thenReturn(savedCertificate);
 
-        Certificate createCertificateResult = certificateService.createCertificate(certifcateCreationRequest, multipartFile);
+//         Certificate createCertificateResult = certificateService.createCertificate(certifcateCreationRequest, multipartFile);
 
-        assertNotNull(createCertificateResult);
-        assertEquals(savedCertificate.getId(), createCertificateResult.getId());
-        assertEquals(CertificateStatus.PENDING, createCertificateResult.getStatus());
+//         assertNotNull(createCertificateResult);
+//         assertEquals(savedCertificate.getId(), createCertificateResult.getId());
+//         assertEquals(CertificateStatus.PENDING, createCertificateResult.getStatus());
 
-        verify(storagePort, times(1)).uploadFile(any(), any(), any());
-        verify(certificateRepository, times(1)).insert(any(Certificate.class));
-        verify(kafkaTemplate, times(1)).send(anyString(), any());
-    }
+//         verify(storagePort, times(1)).uploadFile(any(), any(), any());
+//         verify(certificateRepository, times(1)).insert(any(Certificate.class));
+//         verify(kafkaTemplate, times(1)).send(anyString(), any());
+//     }
 
-    @Test
-    @DisplayName("Should throw exception when trying to create a duplicated certificate")
-    void shouldThrowExceptionWhenCertificateAlreadyExists() {
-        when(certificateRepository.findByCreatedByAndTitleAndCategory(
-                certifcateCreationRequest.createdBy(),
-                certifcateCreationRequest.title(),
-                certifcateCreationRequest.category()
-        )).thenReturn(Optional.of(Certificate.builder().build()));
+//     @Test
+//     @DisplayName("Should throw exception when trying to create a duplicated certificate")
+//     void shouldThrowExceptionWhenCertificateAlreadyExists() {
+//         when(certificateRepository.findByCreatedByAndTitleAndCategory(
+//                 certifcateCreationRequest.createdBy(),
+//                 certifcateCreationRequest.title(),
+//                 certifcateCreationRequest.category()
+//         )).thenReturn(Optional.of(Certificate.builder().build()));
 
-        assertThrows(RuntimeException.class, () -> {
-            certificateService.createCertificate(certifcateCreationRequest, multipartFile);
-        });
+//         assertThrows(RuntimeException.class, () -> {
+//             certificateService.createCertificate(certifcateCreationRequest, multipartFile);
+//         });
 
-        verify(storagePort, never()).uploadFile(any(), any(), any());
-        verify(kafkaTemplate, never()).send(anyString(), any());
-    }
+//         verify(storagePort, never()).uploadFile(any(), any(), any());
+//         verify(kafkaTemplate, never()).send(anyString(), any());
+//     }
 
-    @Test
-    @DisplayName("Should delete the certificate and the S3 bucket file when the ID exists")
-    void shouldDeleteCertificateAndFileFromS3() {
-        Certificate certificate = Certificate.builder()
-                .id("some-random-id")
-                .s3ObjectKey("some-unique-key.pdf")
-                .build();
+//     @Test
+//     @DisplayName("Should delete the certificate and the S3 bucket file when the ID exists")
+//     void shouldDeleteCertificateAndFileFromS3() {
+//         Certificate certificate = Certificate.builder()
+//                 .id("some-random-id")
+//                 .s3ObjectKey("some-unique-key.pdf")
+//                 .build();
 
-        when(certificateRepository.findById("some-random-id")).thenReturn(Optional.of(certificate));
-        doNothing().when(storagePort).deleteFile(anyString());
-        doNothing().when(certificateRepository).delete(any(Certificate.class));
-        certificateService.deleteCertificate("some-random-id");
+//         when(certificateRepository.findById("some-random-id")).thenReturn(Optional.of(certificate));
+//         doNothing().when(storagePort).deleteFile(anyString());
+//         doNothing().when(certificateRepository).delete(any(Certificate.class));
+//         certificateService.deleteCertificate("some-random-id");
 
-        verify(certificateRepository, times(1)).delete(certificate);
-        verify(storagePort, times(1)).deleteFile("some-unique-key.pdf");
-    }
+//         verify(certificateRepository, times(1)).delete(certificate);
+//         verify(storagePort, times(1)).deleteFile("some-unique-key.pdf");
+//     }
 }

@@ -7,6 +7,7 @@ import com.achcar_solutions.easycomm_core.repositories.CertificateRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -19,11 +20,16 @@ public class CertificateConsumerService {
     private final CertificateRepository certificateRepository;
     private final StoragePort storagePort;
     private final OcrService ocrService;
+    private final KafkaTemplate<String, CertificateKafkaMessage> kafkaTemplate;
 
-    public CertificateConsumerService(CertificateRepository certificateRepository, StoragePort storagePort, OcrService ocrService) {
+    public CertificateConsumerService(CertificateRepository certificateRepository, 
+                                     StoragePort storagePort, 
+                                     OcrService ocrService,
+                                     KafkaTemplate<String, CertificateKafkaMessage> kafkaTemplate) {
         this.certificateRepository = certificateRepository;
         this.storagePort = storagePort;
         this.ocrService = ocrService;
+        this.kafkaTemplate = kafkaTemplate;
     }
 
     @KafkaListener(topics = "certificates-to-process", groupId = "certificate-processor")
@@ -38,26 +44,52 @@ public class CertificateConsumerService {
                     File tempFile = null;
                     try {
                         logger.info("Certificado '{}' encontrado no banco. Status atual: {}.", certificate.getTitle(), certificate.getStatus());
+                        logger.info("Tipo do arquivo: '{}'", certificate.getFileType());
 
-                        logger.info("Baixando arquivo da S3...");
-                        byte[] fileData = storagePort.downloadFile(kafkaMessage.s3ObjectKey());
-                        logger.info("Arquivo baixado com sucesso (Tamanho: {} bytes).", fileData.length);
+                        // Verificar se é imagem (PNG/JPEG) - pula OCR e envia direto para IA
+                        boolean isImage = certificate.getFileType() != null && 
+                            (certificate.getFileType().contains("png") || 
+                             certificate.getFileType().contains("jpeg") ||
+                             certificate.getFileType().contains("jpg"));
 
-                        tempFile = File.createTempFile("ocr_" + certificate.getId(), ".pdf");
-                        Files.write(tempFile.toPath(), fileData);
+                        logger.info("É imagem? {}", isImage);
 
-                        logger.info("Iniciando extração de texto pelo OCR...");
-                        String extractedText = ocrService.extractTextFromFile(tempFile);
-                        logger.info("Texto extraído com sucesso. Tamanho do texto: {} caracteres.", extractedText.length());
+                        if (isImage) {
+                            logger.info("📷 Arquivo é uma imagem. Pulando OCR e enviando direto para IA...");
+                            certificate.setOcrRawText(null); // Não tem texto OCR
+                            certificate.setStatus(CertificateStatus.PENDING);
+                            certificateRepository.save(certificate);
+                            
+                            // Enviar para IA com URL da imagem
+                            kafkaTemplate.send("certificates-ocr-completed", kafkaMessage);
+                            logger.info("✅ Mensagem enviada para o tópico 'certificates-ocr-completed' (processamento de imagem)");
+                        } else {
+                            // PDF - processar com OCR
+                            logger.info("📄 Arquivo é PDF. Processando com OCR...");
+                            logger.info("Baixando arquivo da S3...");
+                            byte[] fileData = storagePort.downloadFile(kafkaMessage.s3ObjectKey());
+                            logger.info("Arquivo baixado com sucesso (Tamanho: {} bytes).", fileData.length);
 
-                        certificate.setOcrRawText(extractedText);
-                        certificate.setStatus(CertificateStatus.PENDING);
-                        certificateRepository.save(certificate);
-                        logger.info("Certificado salvo no banco de dados com sucesso!");
+                            tempFile = File.createTempFile("ocr_" + certificate.getId(), ".pdf");
+                            Files.write(tempFile.toPath(), fileData);
+
+                            logger.info("Iniciando extração de texto pelo OCR...");
+                            String extractedText = ocrService.extractTextFromFile(tempFile);
+                            logger.info("Texto extraído com sucesso. Tamanho do texto: {} caracteres.", extractedText.length());
+
+                            certificate.setOcrRawText(extractedText);
+                            certificate.setStatus(CertificateStatus.PENDING);
+                            certificateRepository.save(certificate);
+                            logger.info("Certificado salvo no banco de dados com sucesso!");
+
+                            // ✅ ENVIAR PARA O PRÓXIMO TÓPICO (IA)
+                            logger.info("Enviando certificado para o processamento de IA...");
+                            kafkaTemplate.send("certificates-ocr-completed", kafkaMessage);
+                            logger.info("✅ Mensagem enviada para o tópico 'certificates-ocr-completed'");
+                        }
 
                     } catch (Exception e) {
-                        System.out.println("Error while processing certificate: " + e.getMessage());
-                        logger.error("ERRO CRÍTICO ao processar o certificado ID {}: {}", certificate.getId(), e.getMessage(), e);
+                        logger.error("❌ ERRO CRÍTICO ao processar o certificado ID {}: {}", certificate.getId(), e.getMessage(), e);
                     } finally {
                         if (tempFile != null && tempFile.exists()) {
                             boolean deleted = tempFile.delete();

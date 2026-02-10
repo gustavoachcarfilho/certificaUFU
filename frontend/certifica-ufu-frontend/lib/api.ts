@@ -84,7 +84,7 @@ export const applyToOpportunity = async (opportunityId: string) => {
   
       const allCerts = await response.json();
       // Filter for pending certificates on the client-side for now
-      return allCerts.filter(cert => cert.status === 'PENDING');
+    return allCerts.filter((cert: any) => cert.status === 'PENDING');
   };
 
   export const createCertificate = async (certificateData: object, file: File) => {
@@ -186,6 +186,23 @@ export const getAllOpportunities = async () => {
   
     const data = await response.json();
     return data.url; // A API retorna { "url": "..." }
+  };
+
+  export const getCertificateAiData = async (certificateId: string) => {
+    const token = localStorage.getItem('authToken');
+  
+    const response = await fetch(`${API_URL}/certificate/${certificateId}/ai-data`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+      },
+    });
+  
+    if (!response.ok) {
+      throw new Error('Falha ao obter os dados extraídos pela IA.');
+    }
+  
+    return response.json();
   };
 
   export const registerUser = async (userData: object) => {

@@ -1,6 +1,6 @@
-/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[2].use[1]!./node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[13].oneOf[2].use[2]!./node_modules/next/font/google/target.css?{"path":"app\\layout.tsx","import":"Inter","arguments":[{"subsets":["latin"]}],"variableName":"inter"} ***!
-  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/.pnpm/next@15.2.4_react-dom@19.2.1_react@19.2.1__react@19.2.1/node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[2].use[1]!./node_modules/.pnpm/next@15.2.4_react-dom@19.2.1_react@19.2.1__react@19.2.1/node_modules/next/dist/build/webpack/loaders/next-font-loader/index.js??ruleSet[1].rules[13].oneOf[2].use[2]!./node_modules/.pnpm/next@15.2.4_react-dom@19.2.1_react@19.2.1__react@19.2.1/node_modules/next/font/google/target.css?{"path":"app\\layout.tsx","import":"Inter","arguments":[{"subsets":["latin"]}],"variableName":"inter"} ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /* cyrillic-ext */
 @font-face {
   font-family: 'Inter';
@@ -67,9 +67,9 @@
 }.__className_f367f3 {font-family: 'Inter', 'Inter Fallback';font-style: normal
 }
 
-/*!*************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[3]!./app/globals.css ***!
-  \*************************************************************************************************************************************************************************************************************************************************************/
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/.pnpm/next@15.2.4_react-dom@19.2.1_react@19.2.1__react@19.2.1/node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[2]!./node_modules/.pnpm/next@15.2.4_react-dom@19.2.1_react@19.2.1__react@19.2.1/node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[10].use[3]!./app/globals.css ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 *, ::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
@@ -177,7 +177,7 @@
   --tw-contain-paint:  ;
   --tw-contain-style:  ;
 }/*
-! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com
+! tailwindcss v3.4.18 | MIT License | https://tailwindcss.com
 *//*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
 2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
@@ -815,6 +815,12 @@ video {
 .mr-2 {
   margin-right: 0.5rem;
 }
+.mt-0\.5 {
+  margin-top: 0.125rem;
+}
+.mt-1 {
+  margin-top: 0.25rem;
+}
 .mt-1\.5 {
   margin-top: 0.375rem;
 }
@@ -1263,6 +1269,11 @@ video {
   margin-top: calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(0.5rem * var(--tw-space-y-reverse));
 }
+.space-y-3 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-y-reverse: 0;
+  margin-top: calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));
+  margin-bottom: calc(0.75rem * var(--tw-space-y-reverse));
+}
 .space-y-4 > :not([hidden]) ~ :not([hidden]) {
   --tw-space-y-reverse: 0;
   margin-top: calc(1rem * calc(1 - var(--tw-space-y-reverse)));
@@ -1366,6 +1377,10 @@ video {
 .border-\[--color-border\] {
   border-color: var(--color-border);
 }
+.border-amber-300 {
+  --tw-border-opacity: 1;
+  border-color: rgb(252 211 77 / var(--tw-border-opacity, 1));
+}
 .border-border\/50 {
   border-color: hsl(var(--border) / 0.5);
 }
@@ -1404,6 +1419,10 @@ video {
 .bg-accent {
   background-color: hsl(var(--accent));
 }
+.bg-amber-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 251 235 / var(--tw-bg-opacity, 1));
+}
 .bg-background {
   background-color: hsl(var(--background));
 }
@@ -1413,6 +1432,10 @@ video {
 .bg-blue-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(219 234 254 / var(--tw-bg-opacity, 1));
+}
+.bg-blue-50 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(239 246 255 / var(--tw-bg-opacity, 1));
 }
 .bg-border {
   background-color: hsl(var(--border));
@@ -1619,6 +1642,9 @@ video {
 .pt-0 {
   padding-top: 0px;
 }
+.pt-2 {
+  padding-top: 0.5rem;
+}
 .pt-3 {
   padding-top: 0.75rem;
 }
@@ -1695,6 +1721,14 @@ video {
 }
 .text-accent-foreground {
   color: hsl(var(--accent-foreground));
+}
+.text-amber-600 {
+  --tw-text-opacity: 1;
+  color: rgb(217 119 6 / var(--tw-text-opacity, 1));
+}
+.text-amber-800 {
+  --tw-text-opacity: 1;
+  color: rgb(146 64 14 / var(--tw-text-opacity, 1));
 }
 .text-blue-100 {
   --tw-text-opacity: 1;
@@ -2791,6 +2825,14 @@ video {
 .dark\:border-destructive:is(.dark *) {
   border-color: hsl(var(--destructive));
 }
+.dark\:bg-amber-950:is(.dark *) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(69 26 3 / var(--tw-bg-opacity, 1));
+}
+.dark\:bg-blue-950:is(.dark *) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(23 37 84 / var(--tw-bg-opacity, 1));
+}
 .dark\:bg-gray-800:is(.dark *) {
   --tw-bg-opacity: 1;
   background-color: rgb(31 41 55 / var(--tw-bg-opacity, 1));
@@ -2810,6 +2852,14 @@ video {
 }
 .dark\:to-gray-900:is(.dark *) {
   --tw-gradient-to: #111827 var(--tw-gradient-to-position);
+}
+.dark\:text-amber-200:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(253 230 138 / var(--tw-text-opacity, 1));
+}
+.dark\:text-amber-500:is(.dark *) {
+  --tw-text-opacity: 1;
+  color: rgb(245 158 11 / var(--tw-text-opacity, 1));
 }
 .dark\:text-gray-400:is(.dark *) {
   --tw-text-opacity: 1;

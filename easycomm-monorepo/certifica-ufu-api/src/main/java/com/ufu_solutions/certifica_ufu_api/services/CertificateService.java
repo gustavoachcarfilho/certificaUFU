@@ -87,7 +87,7 @@ public class CertificateService {
 
             CertificateKafkaMessage kafkaMessage = new CertificateKafkaMessage(savedCertificate.getId(), savedCertificate.getS3ObjectKey());
             kafkaTemplate.send(KafkaTopicConfiguration.CERTIFICATE_TOPIC, kafkaMessage);
-            logger.info("Message successfully sent to Kafka.");
+            logger.info("Message successfully sent to Kafka for asynchronous processing.");
 
             return savedCertificate;
 
