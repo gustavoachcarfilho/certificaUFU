@@ -42,11 +42,7 @@
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
 		</dependency>
-		<dependency>
-    		<groupId>net.sourceforge.tess4j</groupId>
-			<artifactId>tess4j</artifactId>
-			<version>5.16.0</version>
-		</dependency>
+		<!-- Tess4J removido - usando Tesseract via linha de comando -->
 		<dependency>
 			<groupId>com.github.jai-imageio</groupId>
 			<artifactId>jai-imageio-core</artifactId>

@@ -1,25 +1,100 @@
 services:
-  zookeeper:
-    image: 'bitnami/zookeeper:3.9'
+  mongodb:
+    image: 'mongo:7.0'
+    container_name: certifica-mongodb
     ports:
-      - '2181:2181'
+      - '27017:27017'
+    volumes:
+      - mongodb-data:/data/db
     environment:
-      - ALLOW_ANONYMOUS_LOGIN=yes
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin123
+      MONGO_INITDB_DATABASE: certifica_ufu
     networks:
       - easycomm-net
+    restart: unless-stopped
+
+  zookeeper:
+    image: 'wurstmeister/zookeeper:latest'
+    container_name: certifica-zookeeper
+    ports:
+      - '2181:2181'
+    volumes:
+      - zookeeper-data:/opt/zookeeper-3.4.13/data
+    networks:
+      - easycomm-net
+    restart: unless-stopped
 
   kafka:
-    image: 'bitnami/kafka:3.6'
+    image: 'wurstmeister/kafka:latest'
+    container_name: certifica-kafka
     ports:
       - '9092:9092'
+      - '9093:9093'
     environment:
-      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
-      - KAFKA_CFG_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092
-      - ALLOW_PLAINTEXT_LISTENER=yes
+      KAFKA_LISTENERS: INSIDE://0.0.0.0:9093,OUTSIDE://0.0.0.0:9092
+      KAFKA_ADVERTISED_LISTENERS: INSIDE://kafka:9093,OUTSIDE://localhost:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INSIDE:PLAINTEXT,OUTSIDE:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: INSIDE
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_CREATE_TOPICS: "certificates-to-process:1:1,certificates-ocr-completed:1:1"
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'true'
+      KAFKA_LOG_RETENTION_HOURS: 168
+      KAFKA_LOG_SEGMENT_BYTES: 1073741824
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
     depends_on:
       - zookeeper
     networks:
       - easycomm-net
+    restart: unless-stopped
+
+  certifica-ufu-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: certifica-ufu-api
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://admin:admin123@mongodb:27017/certifica_ufu?authSource=admin
+      - SPRING_KAFKA_BOOTSTRAP_SERVERS=kafka:9093
+    depends_on:
+      - mongodb
+      - kafka
+    networks:
+      - easycomm-net
+    restart: unless-stopped
+
+  certifica-ufu-processor:
+    build:
+      context: .
+      dockerfile: Dockerfile.processor
+    container_name: certifica-ufu-processor
+    ports:
+      - "8081:8081"
+    env_file:
+      - .env
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://admin:admin123@mongodb:27017/certifica_ufu?authSource=admin
+      - SPRING_KAFKA_BOOTSTRAP_SERVERS=kafka:9093
+    depends_on:
+      - mongodb
+      - kafka
+    networks:
+      - easycomm-net
+    restart: unless-stopped
+
+volumes:
+  mongodb-data:
+    name: certifica-mongodb-data
+  zookeeper-data:
+    name: certifica-zookeeper-data
+  kafka-data:
+    name: certifica-kafka-data
 
 networks:
   easycomm-net:

@@ -25,11 +25,14 @@ public class AiExtractionService {
 
     @KafkaListener(topics = "certificates-ocr-completed", groupId = "ai-extraction-processor")
     public void processWithAi(CertificateKafkaMessage kafkaMessage) {
-        logger.info("==============================================");
-        logger.info("PROCESSADOR IA: Mensagem recebida do OCR!");
-        logger.info("--> ID do Certificado: {}", kafkaMessage.certificateId());
+        try {
+            logger.info("==============================================");
+            logger.info("🤖 PROCESSADOR IA: Mensagem recebida do OCR!");
+            logger.info("--> ID do Certificado: {}", kafkaMessage.certificateId());
+            logger.info("--> S3 Object Key: {}", kafkaMessage.s3ObjectKey());
+            logger.info("==============================================");
 
-        certificateRepository.findById(kafkaMessage.certificateId()).ifPresentOrElse(
+            certificateRepository.findById(kafkaMessage.certificateId()).ifPresentOrElse(
                 certificate -> {
                     try {
                         // Verificar se é imagem ou PDF
@@ -126,6 +129,9 @@ public class AiExtractionService {
                 },
                 () -> logger.error("❌ FALHA: Certificado com ID {} não encontrado.", kafkaMessage.certificateId())
         );
-        logger.info("==============================================");
+            logger.info("==============================================");
+        } catch (Exception e) {
+            logger.error("❌ ERRO CRÍTICO no processamento IA da mensagem: {}", e.getMessage(), e);
+        }
     }
 }

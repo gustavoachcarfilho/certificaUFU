@@ -25,6 +25,18 @@ public class KafkaProducerConfig {
         Map<String, Object> configProps = new HashMap<>();
         configProps.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
         configProps.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+        configProps.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
+        
+        // Configurações de timeout e retry
+        configProps.put(ProducerConfig.REQUEST_TIMEOUT_MS_CONFIG, 30000); // 30 segundos
+        configProps.put(ProducerConfig.DELIVERY_TIMEOUT_MS_CONFIG, 120000); // 2 minutos
+        configProps.put(ProducerConfig.MAX_BLOCK_MS_CONFIG, 30000); // 30 segundos
+        configProps.put(ProducerConfig.RETRIES_CONFIG, 3);
+        configProps.put(ProducerConfig.ACKS_CONFIG, "1"); // Ack apenas do líder
+        
+        // Configurações de conexão
+        configProps.put(ProducerConfig.RECONNECT_BACKOFF_MS_CONFIG, 1000);
+        configProps.put(ProducerConfig.RECONNECT_BACKOFF_MAX_MS_CONFIG, 10000);
 
         JsonSerializer<CertificateKafkaMessage> jsonSerializer = new JsonSerializer<>();
         jsonSerializer.setAddTypeInfo(false);

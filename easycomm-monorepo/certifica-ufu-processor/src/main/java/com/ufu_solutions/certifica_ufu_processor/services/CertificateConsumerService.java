@@ -84,8 +84,20 @@ public class CertificateConsumerService {
 
                             // ✅ ENVIAR PARA O PRÓXIMO TÓPICO (IA)
                             logger.info("Enviando certificado para o processamento de IA...");
-                            kafkaTemplate.send("certificates-ocr-completed", kafkaMessage);
-                            logger.info("✅ Mensagem enviada para o tópico 'certificates-ocr-completed'");
+                            try {
+                                kafkaTemplate.send("certificates-ocr-completed", kafkaMessage)
+                                    .whenComplete((result, ex) -> {
+                                        if (ex == null) {
+                                            logger.info("✅ Mensagem enviada com sucesso para 'certificates-ocr-completed' - Partition: {}, Offset: {}",
+                                                result.getRecordMetadata().partition(),
+                                                result.getRecordMetadata().offset());
+                                        } else {
+                                            logger.error("❌ ERRO ao enviar mensagem para Kafka: {}", ex.getMessage(), ex);
+                                        }
+                                    });
+                            } catch (Exception e) {
+                                logger.error("❌ ERRO ao tentar enviar para Kafka: {}", e.getMessage(), e);
+                            }
                         }
 
                     } catch (Exception e) {
