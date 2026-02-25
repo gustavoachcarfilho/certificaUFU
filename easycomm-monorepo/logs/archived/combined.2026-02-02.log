@@ -1,0 +1,501 @@
+2026-02-02 14:59:31.494 [                  ] [main] INFO  c.u.c.CertificaufuApplication - Starting CertificaufuApplication using Java 24.0.1 with PID 4084 (C:\Users\Gustavo Achcar Filho\Desktop\projects\Certifica UFU - PDSI1\certificaUFU\easycomm-monorepo\certifica-ufu-api\target\classes started by Gustavo Achcar Filho in C:\Users\Gustavo Achcar Filho\Desktop\projects\Certifica UFU - PDSI1\certificaUFU\easycomm-monorepo)
+2026-02-02 14:59:31.504 [                  ] [main] INFO  c.u.c.CertificaufuApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-02 14:59:32.046 [                  ] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2026-02-02 14:59:32.093 [                  ] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 41 ms. Found 3 MongoDB repository interfaces.
+2026-02-02 14:59:32.944 [                  ] [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-02-02 14:59:32.962 [                  ] [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-02-02 14:59:32.963 [                  ] [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-02-02 14:59:32.965 [                  ] [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.20]
+2026-02-02 14:59:33.032 [                  ] [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-02-02 14:59:33.032 [                  ] [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1477 ms
+2026-02-02 14:59:33.224 [                  ] [main] INFO  org.mongodb.driver.client - MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "4.11.2"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Oracle Corporation/24.0.1+9-30"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, transportSettings=null, streamFactoryFactory=null, commandListeners=[], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@46b2dcc5, com.mongodb.Jep395RecordCodecProvider@240f350a, com.mongodb.KotlinCodecProvider@706f6d26]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null}
+2026-02-02 14:59:33.252 [                  ] [cluster-ClusterId{value='6980e605739d2727ebc18f25', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=25, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=27959600}
+2026-02-02 14:59:33.562 [                  ] [main] INFO  o.s.d.p.DefaultProjectionInformation$PropertyDescriptorSource - Couldn't read class metadata for interface java.io.Serializable. Input property calculation might fail
+2026-02-02 14:59:34.846 [                  ] [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6e7f29d5, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@27048db3, org.springframework.security.web.context.SecurityContextHolderFilter@1eddca25, org.springframework.security.web.header.HeaderWriterFilter@64e89bb2, org.springframework.web.filter.CorsFilter@7f94541b, org.springframework.security.web.authentication.logout.LogoutFilter@2078bf0a, com.ufu_solutions.certifica_ufu_api.security.SecurityFilter@b428830, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@581e8969, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@767b9d66, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7bebad0d, org.springframework.security.web.session.SessionManagementFilter@612bb755, org.springframework.security.web.access.ExceptionTranslationFilter@2314cd97, org.springframework.security.web.access.intercept.AuthorizationFilter@116b0b32]
+2026-02-02 14:59:35.191 [                  ] [main] INFO  o.a.k.c.admin.AdminClientConfig - AdminClientConfig values: 
+	auto.include.jmx.reporter = true
+	bootstrap.servers = [localhost:9092]
+	client.dns.lookup = use_all_dns_ips
+	client.id = 
+	connections.max.idle.ms = 300000
+	default.api.timeout.ms = 60000
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+
+2026-02-02 14:59:35.277 [                  ] [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka version: 3.6.2
+2026-02-02 14:59:35.278 [                  ] [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka commitId: c4deed513057c94e
+2026-02-02 14:59:35.279 [                  ] [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka startTimeMs: 1770055175275
+2026-02-02 14:59:35.736 [                  ] [kafka-admin-client-thread | adminclient-1] INFO  o.a.kafka.common.utils.AppInfoParser - App info kafka.admin.client for adminclient-1 unregistered
+2026-02-02 14:59:35.743 [                  ] [kafka-admin-client-thread | adminclient-1] INFO  o.a.kafka.common.metrics.Metrics - Metrics scheduler closed
+2026-02-02 14:59:35.743 [                  ] [kafka-admin-client-thread | adminclient-1] INFO  o.a.kafka.common.metrics.Metrics - Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-02-02 14:59:35.743 [                  ] [kafka-admin-client-thread | adminclient-1] INFO  o.a.kafka.common.metrics.Metrics - Metrics reporters closed
+2026-02-02 14:59:35.746 [                  ] [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-02-02 14:59:35.749 [                  ] [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2026-02-02 14:59:35.768 [                  ] [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-02-02 14:59:35.787 [                  ] [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2026-02-02 15:03:50.562 [                  ] [main] INFO  c.u.c.CertificaufuApplication - Starting CertificaufuApplication using Java 24.0.1 with PID 5960 (C:\Users\Gustavo Achcar Filho\Desktop\projects\Certifica UFU - PDSI1\certificaUFU\easycomm-monorepo\certifica-ufu-api\target\classes started by Gustavo Achcar Filho in C:\Users\Gustavo Achcar Filho\Desktop\projects\Certifica UFU - PDSI1\certificaUFU\easycomm-monorepo)
+2026-02-02 15:03:50.564 [                  ] [main] INFO  c.u.c.CertificaufuApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-02 15:03:50.997 [                  ] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2026-02-02 15:03:51.033 [                  ] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 31 ms. Found 3 MongoDB repository interfaces.
+2026-02-02 15:03:51.606 [                  ] [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-02-02 15:03:51.621 [                  ] [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-02-02 15:03:51.622 [                  ] [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-02-02 15:03:51.622 [                  ] [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.20]
+2026-02-02 15:03:51.677 [                  ] [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-02-02 15:03:51.678 [                  ] [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1067 ms
+2026-02-02 15:03:51.802 [                  ] [main] INFO  org.mongodb.driver.client - MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "4.11.2"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Oracle Corporation/24.0.1+9-30"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, transportSettings=null, streamFactoryFactory=null, commandListeners=[], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@3b11620a, com.mongodb.Jep395RecordCodecProvider@2fd1ad8a, com.mongodb.KotlinCodecProvider@357f6391]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null}
+2026-02-02 15:03:51.814 [                  ] [cluster-ClusterId{value='6980e707cb667d15d98f1676', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=25, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=14836300}
+2026-02-02 15:03:52.053 [                  ] [main] INFO  o.s.d.p.DefaultProjectionInformation$PropertyDescriptorSource - Couldn't read class metadata for interface java.io.Serializable. Input property calculation might fail
+2026-02-02 15:03:52.885 [                  ] [main] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6d5de79a, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@796642ae, org.springframework.security.web.context.SecurityContextHolderFilter@1ef5cde4, org.springframework.security.web.header.HeaderWriterFilter@430212cb, org.springframework.web.filter.CorsFilter@16f8df70, org.springframework.security.web.authentication.logout.LogoutFilter@5a35ae82, com.ufu_solutions.certifica_ufu_api.security.SecurityFilter@5280688, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@27b7204, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5895c065, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6f0ae0ee, org.springframework.security.web.session.SessionManagementFilter@e04b8a0, org.springframework.security.web.access.ExceptionTranslationFilter@2674ca88, org.springframework.security.web.access.intercept.AuthorizationFilter@a93c798]
+2026-02-02 15:03:53.142 [                  ] [main] INFO  o.a.k.c.admin.AdminClientConfig - AdminClientConfig values: 
+	auto.include.jmx.reporter = true
+	bootstrap.servers = [localhost:9092]
+	client.dns.lookup = use_all_dns_ips
+	client.id = 
+	connections.max.idle.ms = 300000
+	default.api.timeout.ms = 60000
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+
+2026-02-02 15:03:53.186 [                  ] [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka version: 3.6.2
+2026-02-02 15:03:53.187 [                  ] [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka commitId: c4deed513057c94e
+2026-02-02 15:03:53.187 [                  ] [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka startTimeMs: 1770055433186
+2026-02-02 15:03:53.418 [                  ] [kafka-admin-client-thread | adminclient-1] INFO  o.a.kafka.common.utils.AppInfoParser - App info kafka.admin.client for adminclient-1 unregistered
+2026-02-02 15:03:53.425 [                  ] [kafka-admin-client-thread | adminclient-1] INFO  o.a.kafka.common.metrics.Metrics - Metrics scheduler closed
+2026-02-02 15:03:53.426 [                  ] [kafka-admin-client-thread | adminclient-1] INFO  o.a.kafka.common.metrics.Metrics - Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2026-02-02 15:03:53.426 [                  ] [kafka-admin-client-thread | adminclient-1] INFO  o.a.kafka.common.metrics.Metrics - Metrics reporters closed
+2026-02-02 15:03:53.430 [                  ] [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-02-02 15:03:53.455 [                  ] [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2026-02-02 15:03:53.462 [                  ] [main] INFO  c.u.c.CertificaufuApplication - Started CertificaufuApplication in 3.427 seconds (process running for 4.094)
+2026-02-02 15:04:20.551 [                  ] [main] INFO  c.u.c.CertificaufuProcessorApplication - Starting CertificaufuProcessorApplication using Java 24.0.1 with PID 28032 (C:\Users\Gustavo Achcar Filho\Desktop\projects\Certifica UFU - PDSI1\certificaUFU\easycomm-monorepo\certifica-ufu-processor\target\classes started by Gustavo Achcar Filho in C:\Users\Gustavo Achcar Filho\Desktop\projects\Certifica UFU - PDSI1\certificaUFU\easycomm-monorepo)
+2026-02-02 15:04:20.552 [                  ] [main] INFO  c.u.c.CertificaufuProcessorApplication - No active profile set, falling back to 1 default profile: "default"
+2026-02-02 15:04:20.971 [                  ] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2026-02-02 15:04:21.006 [                  ] [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 31 ms. Found 3 MongoDB repository interfaces.
+2026-02-02 15:04:21.751 [                  ] [main] INFO  org.mongodb.driver.client - MongoClient with metadata {"driver": {"name": "mongo-java-driver|sync|spring-boot", "version": "4.11.2"}, "os": {"type": "Windows", "name": "Windows 11", "architecture": "amd64", "version": "10.0"}, "platform": "Java/Oracle Corporation/24.0.1+9-30"} created with settings MongoClientSettings{readPreference=primary, writeConcern=WriteConcern{w=null, wTimeout=null ms, journal=null}, retryWrites=true, retryReads=true, readConcern=ReadConcern{level=null}, credential=null, transportSettings=null, streamFactoryFactory=null, commandListeners=[], codecRegistry=ProvidersCodecRegistry{codecProviders=[ValueCodecProvider{}, BsonValueCodecProvider{}, DBRefCodecProvider{}, DBObjectCodecProvider{}, DocumentCodecProvider{}, CollectionCodecProvider{}, IterableCodecProvider{}, MapCodecProvider{}, GeoJsonCodecProvider{}, GridFSFileCodecProvider{}, Jsr310CodecProvider{}, JsonObjectCodecProvider{}, BsonCodecProvider{}, EnumCodecProvider{}, com.mongodb.client.model.mql.ExpressionCodecProvider@15e1f8fe, com.mongodb.Jep395RecordCodecProvider@110b7837, com.mongodb.KotlinCodecProvider@6ee88e21]}, loggerSettings=LoggerSettings{maxDocumentLength=1000}, clusterSettings={hosts=[localhost:27017], srvServiceName=mongodb, mode=SINGLE, requiredClusterType=UNKNOWN, requiredReplicaSetName='null', serverSelector='null', clusterListeners='[]', serverSelectionTimeout='30000 ms', localThreshold='15 ms'}, socketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=0, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, heartbeatSocketSettings=SocketSettings{connectTimeoutMS=10000, readTimeoutMS=10000, receiveBufferSize=0, proxySettings=ProxySettings{host=null, port=null, username=null, password=null}}, connectionPoolSettings=ConnectionPoolSettings{maxSize=100, minSize=0, maxWaitTimeMS=120000, maxConnectionLifeTimeMS=0, maxConnectionIdleTimeMS=0, maintenanceInitialDelayMS=0, maintenanceFrequencyMS=60000, connectionPoolListeners=[], maxConnecting=2}, serverSettings=ServerSettings{heartbeatFrequencyMS=10000, minHeartbeatFrequencyMS=500, serverListeners='[]', serverMonitorListeners='[]'}, sslSettings=SslSettings{enabled=false, invalidHostNameAllowed=false, context=null}, applicationName='null', compressorList=[], uuidRepresentation=JAVA_LEGACY, serverApi=null, autoEncryptionSettings=null, dnsClient=null, inetAddressResolver=null, contextProvider=null}
+2026-02-02 15:04:21.763 [                  ] [cluster-ClusterId{value='6980e725ec5f5b56bb6a7a7c', description='null'}-localhost:27017] INFO  org.mongodb.driver.cluster - Monitor thread successfully connected to server with description ServerDescription{address=localhost:27017, type=STANDALONE, state=CONNECTED, ok=true, minWireVersion=0, maxWireVersion=25, maxDocumentSize=16777216, logicalSessionTimeoutMinutes=30, roundTripTimeNanos=17889300}
+2026-02-02 15:04:22.106 [                  ] [main] INFO  o.s.d.p.DefaultProjectionInformation$PropertyDescriptorSource - Couldn't read class metadata for interface java.io.Serializable. Input property calculation might fail
+2026-02-02 15:04:22.317 [                  ] [main] INFO  o.a.k.c.consumer.ConsumerConfig - ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.include.jmx.reporter = true
+	auto.offset.reset = latest
+	bootstrap.servers = [localhost:9092]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-certificate-processor-1
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = certificate-processor
+	group.instance.id = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 500
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 45000
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.springframework.kafka.support.serializer.JsonDeserializer
+
+2026-02-02 15:04:22.437 [                  ] [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka version: 3.6.2
+2026-02-02 15:04:22.439 [                  ] [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka commitId: c4deed513057c94e
+2026-02-02 15:04:22.439 [                  ] [main] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka startTimeMs: 1770055462436
+2026-02-02 15:04:22.442 [                  ] [main] INFO  o.s.k.c.DefaultKafkaConsumerFactory$ExtendedKafkaConsumer - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Subscribed to topic(s): certificates-to-process
+2026-02-02 15:04:22.456 [                  ] [main] INFO  c.u.c.CertificaufuProcessorApplication - Started CertificaufuProcessorApplication in 2.374 seconds (process running for 3.094)
+2026-02-02 15:04:22.675 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  org.apache.kafka.clients.Metadata - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Cluster ID: 0BgCJRkDRqGjMty0SdOAig
+2026-02-02 15:04:22.677 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Discovered group coordinator localhost:9092 (id: 2147482646 rack: null)
+2026-02-02 15:04:22.678 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] (Re-)joining group
+2026-02-02 15:04:22.702 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Request joining group due to: need to re-join with the given member-id: consumer-certificate-processor-1-008a46be-69ed-4d42-afd2-3338e7b8114c
+2026-02-02 15:04:22.702 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Request joining group due to: rebalance failed due to 'The group member needs to have a valid member id before actually entering a consumer group.' (MemberIdRequiredException)
+2026-02-02 15:04:22.702 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] (Re-)joining group
+2026-02-02 15:04:25.702 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Successfully joined group with generation Generation{generationId=27, memberId='consumer-certificate-processor-1-008a46be-69ed-4d42-afd2-3338e7b8114c', protocol='range'}
+2026-02-02 15:04:25.720 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Finished assignment for group at generation 27: {consumer-certificate-processor-1-008a46be-69ed-4d42-afd2-3338e7b8114c=Assignment(partitions=[certificates-to-process-0])}
+2026-02-02 15:04:25.752 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Successfully synced group in generation Generation{generationId=27, memberId='consumer-certificate-processor-1-008a46be-69ed-4d42-afd2-3338e7b8114c', protocol='range'}
+2026-02-02 15:04:25.752 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Notifying assignor about the new Assignment(partitions=[certificates-to-process-0])
+2026-02-02 15:04:25.755 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Adding newly assigned partitions: certificates-to-process-0
+2026-02-02 15:04:25.771 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Setting offset for partition certificates-to-process-0 to the committed offset FetchPosition{offset=13, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1001 rack: null)], epoch=0}}
+2026-02-02 15:04:25.772 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.s.k.l.KafkaMessageListenerContainer - certificate-processor: partitions assigned: [certificates-to-process-0]
+2026-02-02 15:11:46.332 [                  ] [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-02-02 15:11:46.332 [                  ] [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-02-02 15:11:46.344 [                  ] [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 11 ms
+2026-02-02 15:11:48.347 [                  ] [http-nio-8080-exec-6] INFO  c.u.c.services.CertificateService - Fetching certificates for user: gustavo@mail.com
+2026-02-02 15:11:48.388 [                  ] [http-nio-8080-exec-2] INFO  c.u.c.services.CertificateService - Fetching certificates for user: gustavo@mail.com
+2026-02-02 15:13:23.043 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Node -1 disconnected.
+2026-02-02 15:20:51.936 [                  ] [http-nio-8080-exec-8] INFO  c.u.c.services.CertificateService - Fetching certificates for user: gustavo@mail.com
+2026-02-02 15:20:51.965 [                  ] [http-nio-8080-exec-4] INFO  c.u.c.services.CertificateService - Fetching certificates for user: gustavo@mail.com
+2026-02-02 15:21:48.791 [                  ] [http-nio-8080-exec-9] INFO  c.u.c.services.CertificateService - Received request to create certificate 'Certificado Teste' for user 'gustavo@mail.com'
+2026-02-02 15:21:48.801 [                  ] [http-nio-8080-exec-9] INFO  c.u.c.services.CertificateService - File validation successful.
+2026-02-02 15:21:48.802 [                  ] [http-nio-8080-exec-9] INFO  c.u.c.services.CertificateService - Uploading file to S3 storage...
+2026-02-02 15:21:50.524 [                  ] [http-nio-8080-exec-9] INFO  c.u.c.services.CertificateService - File uploaded successfully. URL: https://easycomm-bucket.s3.us-east-1.amazonaws.com/4ecde077-16b5-4ee7-8e58-12d9a2d77011.pdf
+2026-02-02 15:21:50.524 [                  ] [http-nio-8080-exec-9] INFO  c.u.c.services.CertificateService - Saving certificate metadata to the database...
+2026-02-02 15:21:50.594 [                  ] [http-nio-8080-exec-9] INFO  c.u.c.services.CertificateService - Certificate metadata saved with ID: 6980eb3ecb667d15d98f1677
+2026-02-02 15:21:50.642 [                  ] [http-nio-8080-exec-9] INFO  o.a.k.c.producer.ProducerConfig - ProducerConfig values: 
+	acks = -1
+	auto.include.jmx.reporter = true
+	batch.size = 16384
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 33554432
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-1
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = true
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 5
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.adaptive.partitioning.enable = true
+	partitioner.availability.timeout.ms = 0
+	partitioner.class = null
+	partitioner.ignore.keys = false
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.3
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.springframework.kafka.support.serializer.JsonSerializer
+
+2026-02-02 15:21:50.665 [                  ] [http-nio-8080-exec-9] INFO  o.a.k.clients.producer.KafkaProducer - [Producer clientId=producer-1] Instantiated an idempotent producer.
+2026-02-02 15:21:50.700 [                  ] [http-nio-8080-exec-9] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka version: 3.6.2
+2026-02-02 15:21:50.700 [                  ] [http-nio-8080-exec-9] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka commitId: c4deed513057c94e
+2026-02-02 15:21:50.700 [                  ] [http-nio-8080-exec-9] INFO  o.a.kafka.common.utils.AppInfoParser - Kafka startTimeMs: 1770056510700
+2026-02-02 15:21:50.734 [                  ] [kafka-producer-network-thread | producer-1] INFO  org.apache.kafka.clients.Metadata - [Producer clientId=producer-1] Cluster ID: 0BgCJRkDRqGjMty0SdOAig
+2026-02-02 15:21:50.755 [                  ] [http-nio-8080-exec-9] INFO  c.u.c.services.CertificateService - Message successfully sent to Kafka.
+2026-02-02 15:21:51.185 [                  ] [kafka-producer-network-thread | producer-1] INFO  o.a.k.c.p.i.TransactionManager - [Producer clientId=producer-1] ProducerId set to 2000 with epoch 0
+2026-02-02 15:21:51.689 [                  ] [http-nio-8080-exec-5] INFO  c.u.c.services.CertificateService - Fetching certificates for user: gustavo@mail.com
+2026-02-02 15:21:51.709 [                  ] [http-nio-8080-exec-5] INFO  c.u.c.services.CertificateService - Fetching certificates for user: gustavo@mail.com
+2026-02-02 15:21:51.737 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  c.u.c.s.CertificateConsumerService - ==============================================
+2026-02-02 15:21:51.737 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  c.u.c.s.CertificateConsumerService - PROCESSADOR: Mensagem recebida! Iniciando processamento...
+2026-02-02 15:21:51.737 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  c.u.c.s.CertificateConsumerService - --> ID do Certificado: 6980eb3ecb667d15d98f1677
+2026-02-02 15:21:51.737 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  c.u.c.s.CertificateConsumerService - --> Chave do Objeto S3: 4ecde077-16b5-4ee7-8e58-12d9a2d77011.pdf
+2026-02-02 15:21:52.089 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  c.u.c.s.CertificateConsumerService - Certificado 'Certificado Teste' encontrado no banco. Status atual: PENDING.
+2026-02-02 15:21:52.089 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  c.u.c.s.CertificateConsumerService - Baixando arquivo da S3...
+2026-02-02 15:21:53.314 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  c.u.c.s.CertificateConsumerService - Arquivo baixado com sucesso (Tamanho: 16948 bytes).
+2026-02-02 15:21:53.318 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  c.u.c.s.CertificateConsumerService - Iniciando extração de texto pelo OCR...
+2026-02-02 15:21:53.333 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  c.u.c.services.OcrService - OCR: Pasta 'tessdata' encontrada em: C:/Program Files/Tesseract-OCR/tessdata
+2026-02-02 15:21:54.508 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.p.p.font.FileSystemFontProvider - 42 new font files found, font cache will be re-built
+2026-02-02 15:21:54.508 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.p.p.font.FileSystemFontProvider - Building on-disk font cache, this may take a while
+2026-02-02 15:21:56.444 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.p.p.font.FileSystemFontProvider - Finished building on-disk font cache, found 383 fonts
+2026-02-02 15:22:03.065 [                  ] [http-nio-8080-exec-2] INFO  c.u.c.services.CertificateService - Fetching certificates for user: gustavo@mail.com
+2026-02-02 15:22:03.079 [                  ] [http-nio-8080-exec-6] INFO  c.u.c.services.CertificateService - Fetching certificates for user: gustavo@mail.com
+2026-02-02 15:22:04.773 [                  ] [http-nio-8080-exec-7] INFO  c.u.c.services.CertificateService - Fetching certificates for user: gustavo@mail.com
+2026-02-02 15:22:04.788 [                  ] [http-nio-8080-exec-9] INFO  c.u.c.services.CertificateService - Fetching certificates for user: gustavo@mail.com
+2026-02-02 15:22:07.370 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  c.u.c.s.CertificateConsumerService - Texto extraído com sucesso. Tamanho do texto: 2673 caracteres.
+2026-02-02 15:22:07.429 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  c.u.c.s.CertificateConsumerService - Certificado salvo no banco de dados com sucesso!
+2026-02-02 15:22:07.430 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  c.u.c.s.CertificateConsumerService - ==============================================
+2026-02-02 15:22:38.898 [                  ] [http-nio-8080-exec-1] INFO  c.u.c.services.CertificateService - Fetching certificates for user: gustavo@mail.com
+2026-02-02 15:22:38.918 [                  ] [http-nio-8080-exec-5] INFO  c.u.c.services.CertificateService - Fetching certificates for user: gustavo@mail.com
+2026-02-02 15:23:21.544 [                  ] [http-nio-8080-exec-1] INFO  c.u.c.services.CertificateService - Fetching certificates for user: gustavo@mail.com
+2026-02-02 15:23:21.563 [                  ] [http-nio-8080-exec-1] INFO  c.u.c.services.CertificateService - Fetching certificates for user: gustavo@mail.com
+2026-02-02 15:23:36.666 [                  ] [http-nio-8080-exec-3] INFO  c.u.c.services.CertificateService - Request received to get all certificates.
+2026-02-02 15:23:36.680 [                  ] [http-nio-8080-exec-5] INFO  c.u.c.services.CertificateService - Request received to get all certificates.
+2026-02-02 15:23:53.911 [                  ] [http-nio-8080-exec-8] INFO  c.u.c.services.CertificateService - Request received to generate pre-signed URL for certificate ID: 6980eb3ecb667d15d98f1677
+2026-02-02 15:23:53.912 [                  ] [http-nio-8080-exec-8] INFO  c.u.c.services.CertificateService - Request received to get certificate by ID: 6980eb3ecb667d15d98f1677
+2026-02-02 15:24:08.977 [                  ] [http-nio-8080-exec-2] INFO  c.u.c.services.CertificateService - Request received to get certificate by ID: 6980eb3ecb667d15d98f1677
+2026-02-02 15:24:09.002 [                  ] [http-nio-8080-exec-3] INFO  c.u.c.services.CertificateService - Request received to get all certificates.
+2026-02-02 15:24:28.707 [                  ] [http-nio-8080-exec-4] INFO  c.u.c.services.CertificateService - Request received to get all certificates.
+2026-02-02 15:24:28.720 [                  ] [http-nio-8080-exec-6] INFO  c.u.c.services.CertificateService - Request received to get all certificates.
+2026-02-02 15:31:20.803 [                  ] [kafka-producer-network-thread | producer-1] INFO  o.apache.kafka.clients.NetworkClient - [Producer clientId=producer-1] Node -1 disconnected.
+2026-02-02 16:21:44.542 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Node 1001 disconnected.
+2026-02-02 16:21:44.547 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Cancelled in-flight FETCH request with correlation id 6512 due to node 1001 being disconnected (elapsed time since creation: 1821184ms, elapsed time since send: 1821184ms, request timeout: 30000ms)
+2026-02-02 16:21:44.554 [                  ] [kafka-coordinator-heartbeat-thread | certificate-processor] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Node 2147482646 disconnected.
+2026-02-02 16:21:44.555 [                  ] [kafka-coordinator-heartbeat-thread | certificate-processor] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Group coordinator localhost:9092 (id: 2147482646 rack: null) is unavailable or invalid due to cause: coordinator unavailable. isDisconnected: true. Rediscovery will be attempted.
+2026-02-02 16:21:44.555 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.clients.FetchSessionHandler - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Error sending fetch request (sessionId=59370038, epoch=5556) to node 1001:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-02-02 16:21:45.525 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Discovered group coordinator localhost:9092 (id: 2147482646 rack: null)
+2026-02-02 16:22:09.308 [                  ] [kafka-producer-network-thread | producer-1] INFO  o.apache.kafka.clients.NetworkClient - [Producer clientId=producer-1] Node 1001 disconnected.
+2026-02-02 17:30:42.100 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Node 2147482646 disconnected.
+2026-02-02 17:30:42.101 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Disconnecting from node 1001 due to request timeout.
+2026-02-02 17:30:42.102 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Cancelled in-flight FETCH request with correlation id 14239 due to node 1001 being disconnected (elapsed time since creation: 751496ms, elapsed time since send: 751496ms, request timeout: 30000ms)
+2026-02-02 17:30:42.102 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.clients.FetchSessionHandler - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Error sending fetch request (sessionId=2015688927, epoch=6584) to node 1001:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-02-02 17:30:42.102 [                  ] [kafka-coordinator-heartbeat-thread | certificate-processor] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Group coordinator localhost:9092 (id: 2147482646 rack: null) is unavailable or invalid due to cause: coordinator unavailable. isDisconnected: true. Rediscovery will be attempted.
+2026-02-02 17:30:43.444 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Discovered group coordinator localhost:9092 (id: 2147482646 rack: null)
+2026-02-02 17:31:09.019 [                  ] [kafka-producer-network-thread | producer-1] INFO  o.apache.kafka.clients.NetworkClient - [Producer clientId=producer-1] Node 1001 disconnected.
+2026-02-02 20:58:39.055 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Node 2147482646 disconnected.
+2026-02-02 20:58:39.057 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Disconnecting from node 1001 due to request timeout.
+2026-02-02 20:58:39.057 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Cancelled in-flight FETCH request with correlation id 17922 due to node 1001 being disconnected (elapsed time since creation: 10889176ms, elapsed time since send: 10889176ms, request timeout: 30000ms)
+2026-02-02 20:58:39.058 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.clients.FetchSessionHandler - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Error sending fetch request (sessionId=299245673, epoch=3145) to node 1001:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-02-02 20:58:39.058 [                  ] [kafka-coordinator-heartbeat-thread | certificate-processor] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Group coordinator localhost:9092 (id: 2147482646 rack: null) is unavailable or invalid due to cause: coordinator unavailable. isDisconnected: true. Rediscovery will be attempted.
+2026-02-02 20:58:40.451 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Discovered group coordinator localhost:9092 (id: 2147482646 rack: null)
+2026-02-02 21:24:20.809 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Node 2147482646 disconnected.
+2026-02-02 21:24:20.811 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Disconnecting from node 1001 due to request timeout.
+2026-02-02 21:24:20.811 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.apache.kafka.clients.NetworkClient - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Cancelled in-flight FETCH request with correlation id 17949 due to node 1001 being disconnected (elapsed time since creation: 1530976ms, elapsed time since send: 1530976ms, request timeout: 30000ms)
+2026-02-02 21:24:20.811 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.clients.FetchSessionHandler - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Error sending fetch request (sessionId=2014020043, epoch=18) to node 1001:
+org.apache.kafka.common.errors.DisconnectException: null
+2026-02-02 21:24:20.811 [                  ] [kafka-coordinator-heartbeat-thread | certificate-processor] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Group coordinator localhost:9092 (id: 2147482646 rack: null) is unavailable or invalid due to cause: coordinator unavailable. isDisconnected: true. Rediscovery will be attempted.
+2026-02-02 21:24:22.963 [                  ] [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] INFO  o.a.k.c.c.i.ConsumerCoordinator - [Consumer clientId=consumer-certificate-processor-1, groupId=certificate-processor] Discovered group coordinator localhost:9092 (id: 2147482646 rack: null)
+2026-02-02 21:24:35.099 [                  ] [kafka-producer-network-thread | producer-1] INFO  o.apache.kafka.clients.NetworkClient - [Producer clientId=producer-1] Node 1001 disconnected.
