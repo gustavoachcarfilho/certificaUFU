@@ -1,0 +1,36 @@
+FROM maven:3.9.6-eclipse-temurin-21 AS build
+WORKDIR /app
+
+# Copia o pom.xml pai
+COPY pom.xml .
+
+# Copia os poms dos módulos primeiro para cache de dependências
+COPY certifica-ufu-core/pom.xml ./certifica-ufu-core/
+COPY certifica-ufu-api/pom.xml ./certifica-ufu-api/
+COPY certifica-ufu-processor/pom.xml ./certifica-ufu-processor/
+
+# Baixa as dependências
+RUN mvn dependency:go-offline -pl certifica-ufu-processor -am || true
+
+# Copia o código fonte
+COPY certifica-ufu-core/src ./certifica-ufu-core/src
+COPY certifica-ufu-api/src ./certifica-ufu-api/src
+COPY certifica-ufu-processor/src ./certifica-ufu-processor/src
+
+# Build do projeto - instala o pom pai, depois o core, depois compila o processor
+RUN mvn clean install -N -DskipTests && \
+    mvn clean install -DskipTests -pl certifica-ufu-core && \
+    mvn clean package -DskipTests -pl certifica-ufu-processor
+
+FROM eclipse-temurin:21-jre
+WORKDIR /app
+
+# Instala Tesseract OCR e poppler-utils (pdftoppm para converter PDF->imagem)
+RUN apt-get update && \
+    apt-get install -y tesseract-ocr tesseract-ocr-por poppler-utils && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+COPY --from=build /app/certifica-ufu-processor/target/*.jar certifica-ufu-processor.jar
+
+ENTRYPOINT ["java", "-jar", "certifica-ufu-processor.jar"]

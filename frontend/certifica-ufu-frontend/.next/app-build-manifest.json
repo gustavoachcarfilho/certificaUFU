@@ -16,16 +16,29 @@
       "static/chunks/main-app.js",
       "static/chunks/app/student/dashboard/page.js"
     ],
-    "/student/submit-document/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/student/submit-document/page.js"
-    ],
     "/student/documents/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/student/documents/page.js"
     ],
+<<<<<<< HEAD
+=======
+    "/student/opportunities/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/student/opportunities/page.js"
+    ],
+    "/student/submit-document/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/student/submit-document/page.js"
+    ],
+    "/admin/dashboard/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/admin/dashboard/page.js"
+    ],
+>>>>>>> bd4c441c6b61b986314fdc0790da138c585a9bb5
     "/admin/opportunities/[id]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",

@@ -1,8 +1,17 @@
 {
   "/page": "app/page.js",
   "/student/dashboard/page": "app/student/dashboard/page.js",
+<<<<<<< HEAD
+=======
+  "/student/opportunities/page": "app/student/opportunities/page.js",
+  "/student/submit-document/page": "app/student/submit-document/page.js",
+>>>>>>> bd4c441c6b61b986314fdc0790da138c585a9bb5
   "/student/documents/page": "app/student/documents/page.js",
   "/student/submit-document/page": "app/student/submit-document/page.js",
   "/admin/opportunities/[id]/page": "app/admin/opportunities/[id]/page.js",
+<<<<<<< HEAD
   "/student/opportunities/page": "app/student/opportunities/page.js"
+=======
+  "/admin/dashboard/page": "app/admin/dashboard/page.js"
+>>>>>>> bd4c441c6b61b986314fdc0790da138c585a9bb5
 }

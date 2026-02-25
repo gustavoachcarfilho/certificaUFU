@@ -109,4 +109,28 @@ public class CertificateController {
         // Retornamos um JSON para ser mais fácil de consumir no frontend
         return ResponseEntity.ok(Map.of("url", url));
     }
+
+    @Operation(summary = "Obter dados extraídos pela IA", description = "Retorna os dados estruturados extraídos pela IA de um certificado.")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Dados da IA retornados com sucesso"),
+            @ApiResponse(responseCode = "404", description = "Certificado não encontrado"),
+            @ApiResponse(responseCode = "403", description = "Acesso negado")
+    })
+    @GetMapping("/{id}/ai-data")
+    public ResponseEntity<Map<String, Object>> getAiData(@PathVariable String id) {
+        Certificate certificate = certificateService.getCertificateById(id);
+        
+        java.util.HashMap<String, Object> aiData = new java.util.HashMap<>();
+        aiData.put("participantName", certificate.getAiParticipantName());
+        aiData.put("institution", certificate.getAiInstitution());
+        aiData.put("eventDate", certificate.getAiEventDate());
+        aiData.put("detectedWorkload", certificate.getAiDetectedWorkload());
+        aiData.put("userWorkload", certificate.getDurationInHours());
+        aiData.put("workloadMismatch", certificate.getAiWorkloadMismatch());
+        aiData.put("confidenceScore", certificate.getAiConfidenceScore());
+        aiData.put("processedAt", certificate.getAiProcessedAt());
+        aiData.put("errorMessage", certificate.getAiErrorMessage());
+        
+        return ResponseEntity.ok(aiData);
+    }
 }

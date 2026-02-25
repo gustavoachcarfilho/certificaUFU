@@ -8,8 +8,8 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter, DialogC
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
-import { getAllOpportunities, getPendingCertificates, validateCertificate, getCertificateViewUrl } from '@/lib/api';
-import { PlusCircle, FileText, CheckCircle, XCircle, LogOut, Eye, Calendar, Clock } from 'lucide-react';
+import { getAllOpportunities, getPendingCertificates, validateCertificate, getCertificateViewUrl, getCertificateAiData } from '@/lib/api';
+import { PlusCircle, FileText, CheckCircle, XCircle, LogOut, Eye, Calendar, Clock, User, Building2, AlertTriangle } from 'lucide-react';
 import Link from 'next/link';
 
 // Interfaces
@@ -28,12 +28,25 @@ interface Certificate {
     durationInHours: number;
 }
 
+interface AiData {
+    participantName: string | null;
+    institution: string | null;
+    eventDate: string | null;
+    detectedWorkload: number | null;
+    userWorkload: number | null;
+    workloadMismatch: boolean | null;
+    confidenceScore: number | null;
+    processedAt: string | null;
+    errorMessage: string | null;
+}
+
 export default function AdminDashboardPage() {
     const [opportunities, setOpportunities] = useState<Opportunity[]>([]);
     const [pendingCerts, setPendingCerts] = useState<Certificate[]>([]);
     const [stats, setStats] = useState({ pending: 0, opportunities: 0 });
     const [selectedCert, setSelectedCert] = useState<Certificate | null>(null);
     const [viewUrl, setViewUrl] = useState<string | null>(null);
+    const [aiData, setAiData] = useState<AiData | null>(null);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [rejectionReason, setRejectionReason] = useState('');
     const [isLoading, setIsLoading] = useState(true);
@@ -64,13 +77,25 @@ export default function AdminDashboardPage() {
 
     const handleOpenReviewModal = async (cert: Certificate) => {
         setSelectedCert(cert);
-        setIsModalOpen(true);
         setViewUrl(null);
+        setAiData(null);
+        setIsModalOpen(true);
+        
+        // Carregar URL do documento
         try {
             const url = await getCertificateViewUrl(cert.id);
             setViewUrl(url);
         } catch (error) {
-            toast({ title: "Não foi possível carregar o documento.", variant: "destructive" });
+            toast({ title: "Erro ao carregar URL do documento.", variant: "destructive" });
+        }
+        
+        // Carregar dados da IA (opcional - não bloqueia o modal se falhar)
+        try {
+            const aiInfo = await getCertificateAiData(cert.id);
+            setAiData(aiInfo);
+        } catch (error) {
+            // IA data é opcional - se não existir, apenas não exibe
+            console.log("Dados da IA não disponíveis para este certificado.");
         }
     };
 
@@ -186,6 +211,75 @@ export default function AdminDashboardPage() {
                                     {viewUrl ? 'Visualizar Documento' : 'Carregando...'}
                                 </Button>
                             </a>
+
+                            {/* Dados Extraídos pela IA */}
+                            {aiData && !aiData.errorMessage && (aiData.participantName || aiData.institution || aiData.eventDate || aiData.detectedWorkload) && (
+                                <div className="border rounded-lg p-4 bg-blue-50 dark:bg-blue-950 space-y-3">
+                                    <h3 className="font-semibold text-sm flex items-center gap-2">
+                                        <FileText className="w-4 h-4" />
+                                        Dados Extraídos Automaticamente
+                                    </h3>
+                                    <div className="space-y-2 text-sm">
+                                        {aiData.participantName && (
+                                            <div className="flex items-start gap-2">
+                                                <User className="w-4 h-4 mt-0.5 text-muted-foreground" />
+                                                <div>
+                                                    <p className="text-xs text-muted-foreground">Participante</p>
+                                                    <p className="font-medium">{aiData.participantName}</p>
+                                                </div>
+                                            </div>
+                                        )}
+                                        {aiData.institution && (
+                                            <div className="flex items-start gap-2">
+                                                <Building2 className="w-4 h-4 mt-0.5 text-muted-foreground" />
+                                                <div>
+                                                    <p className="text-xs text-muted-foreground">Instituição</p>
+                                                    <p className="font-medium">{aiData.institution}</p>
+                                                </div>
+                                            </div>
+                                        )}
+                                        {aiData.eventDate && (
+                                            <div className="flex items-start gap-2">
+                                                <Calendar className="w-4 h-4 mt-0.5 text-muted-foreground" />
+                                                <div>
+                                                    <p className="text-xs text-muted-foreground">Data do Evento</p>
+                                                    <p className="font-medium">{new Date(aiData.eventDate).toLocaleDateString('pt-BR')}</p>
+                                                </div>
+                                            </div>
+                                        )}
+                                        {aiData.detectedWorkload !== null && (
+                                            <div className="flex items-start gap-2">
+                                                <Clock className="w-4 h-4 mt-0.5 text-muted-foreground" />
+                                                <div className="flex-1">
+                                                    <p className="text-xs text-muted-foreground">Carga Horária Detectada</p>
+                                                    <p className="font-medium">{aiData.detectedWorkload}h</p>
+                                                    {aiData.workloadMismatch && (
+                                                        <div className="mt-1 flex items-center gap-1 text-amber-600 dark:text-amber-500">
+                                                            <AlertTriangle className="w-3 h-3" />
+                                                            <span className="text-xs">Divergência detectada (usuário informou {aiData.userWorkload}h)</span>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                            </div>
+                                        )}
+                                        {aiData.confidenceScore !== null && (
+                                            <div className="pt-2 border-t">
+                                                <p className="text-xs text-muted-foreground">
+                                                    Confiança da IA: {Math.round(aiData.confidenceScore * 100)}%
+                                                </p>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                            )}
+
+                            {aiData?.errorMessage && (
+                                <div className="border border-amber-300 rounded-lg p-3 bg-amber-50 dark:bg-amber-950 text-sm">
+                                    <p className="text-amber-800 dark:text-amber-200">
+                                        Erro ao processar IA: {aiData.errorMessage}
+                                    </p>
+                                </div>
+                            )}
                             <div>
                                 <Label htmlFor="rejectionReason">Motivo da Rejeição (se aplicável)</Label>
                                 <Textarea id="rejectionReason" value={rejectionReason} onChange={(e) => setRejectionReason(e.target.value)} />
