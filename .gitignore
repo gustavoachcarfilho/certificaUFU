@@ -52,6 +52,13 @@ Thumbs.db
 application.properties
 *.csv
 
+# Ignore Next.js build directory
+.next/
+
+# Ignore log files and directories
+*.log
+logs/
+
 /frontend/certifica-ufu-frontend/node_modules
 /frontend/certifica-ufu-frontend/.pnpm-store
 /frontend/certifica-ufu-frontend/.next/
