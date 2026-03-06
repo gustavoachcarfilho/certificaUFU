@@ -51,20 +51,19 @@ export function LoginForm() {
     setIsLoading(true);
     
     try {
-      // 1. Faz o login e obtém o token
       const data = await login(email, password);
       localStorage.setItem('authToken', data.token);
 
-      // 2. Decodifica o token para ler as informações ("claims")
       const tokenPayload = parseJwt(data.token);
-      const userRole = tokenPayload?.role; // Pega a role que o backend inseriu
+      const userRole = tokenPayload?.role;
+      const username = tokenPayload?.name || 'Usuário';
 
       toast({
         title: "Login realizado com sucesso!",
-        description: `Bem-vindo(a) como ${userRole || 'usuário'}.`,
+        description: `Bem-vindo(a) ${username}.`,
+        variant: "success",
       });
       
-      // 3. Lógica de redirecionamento baseada na role
       if (userRole === 'ADMIN') {
         router.push('/admin/dashboard');
       } else {
@@ -74,7 +73,7 @@ export function LoginForm() {
     } catch (error: any) {
       toast({
         title: "Erro no login",
-        description: error.message || "Credenciais inválidas ou erro no servidor.",
+        description: "Credenciais inválidas ou erro no servidor.",
         variant: "destructive",
       });
     } finally {
@@ -83,7 +82,6 @@ export function LoginForm() {
   }
 
   return (
-    // O JSX do formulário continua o mesmo
     <Card className="w-full shadow-xl">
         <CardHeader className="text-center">
             <CardTitle className="text-2xl font-bold">Entrar</CardTitle>
