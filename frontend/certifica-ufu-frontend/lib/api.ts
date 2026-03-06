@@ -9,7 +9,7 @@ const API_URL = 'http://localhost:8080';
  * @param password - The user's password.
  * @returns A promise that resolves with the login response data.
  */
-export const login = async (email:any, password:any) => {
+export const login = async (email: any, password: any) => {
   const response = await fetch(`${API_URL}/auth/login`, {
     method: 'POST',
     headers: {
@@ -28,113 +28,113 @@ export const login = async (email:any, password:any) => {
 };
 
 export const applyToOpportunity = async (opportunityId: string) => {
-    const token = localStorage.getItem('authToken');
-  
-    const response = await fetch(`${API_URL}/opportunity/${opportunityId}/apply`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`, // Sending the authentication token
-      },
-    });
-  
-    if (!response.ok) {
-      throw new Error('Falha ao se candidatar à oportunidade.');
-    }
-  
-    return response.json();
+  const token = localStorage.getItem('authToken');
+
+  const response = await fetch(`${API_URL}/opportunity/${opportunityId}/apply`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`, // Sending the authentication token
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error('Falha ao se candidatar à oportunidade.');
+  }
+
+  return response.json();
+};
+
+export const validateCertificate = async (certificateId: string, status: 'APPROVED' | 'DENIED', rejectionReason?: string) => {
+  const token = localStorage.getItem('authToken');
+  const body = {
+    status,
+    rejectionReason,
   };
 
-  export const validateCertificate = async (certificateId: string, status: 'APPROVED' | 'DENIED', rejectionReason?: string) => {
-    const token = localStorage.getItem('authToken');
-    const body = {
-      status,
-      rejectionReason,
-    };
-  
-    const response = await fetch(`${API_URL}/certificate/${certificateId}/validate`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`,
-      },
-      body: JSON.stringify(body),
-    });
-  
-    if (!response.ok) {
-      throw new Error('Falha ao validar o certificado.');
-    }
-  
-    return response.json();
-  };
-  
-  export const getPendingCertificates = async () => {
-      const token = localStorage.getItem('authToken');
-  
-      const response = await fetch(`${API_URL}/certificate`, { // Assuming GET /certificate returns all
-          method: 'GET',
-          headers: {
-              'Authorization': `Bearer ${token}`,
-          },
-      });
-  
-      if (!response.ok) {
-          throw new Error('Falha ao buscar certificados.');
-      }
-  
-      const allCerts = await response.json();
-      // Filter for pending certificates on the client-side for now
-    return allCerts.filter((cert: any) => cert.status === 'PENDING');
-  };
+  const response = await fetch(`${API_URL}/certificate/${certificateId}/validate`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    },
+    body: JSON.stringify(body),
+  });
 
-  export const createCertificate = async (certificateData: object, file: File) => {
-    const token = localStorage.getItem('authToken');
-    
-    // FormData is used to send files and data together.
-    const formData = new FormData();
-    
-    // The backend expects a JSON part named "request". We must create a Blob for it.
-    formData.append('request', new Blob([JSON.stringify(certificateData)], { type: 'application/json' }));
-    
-    // The backend expects a file part named "file".
-    formData.append('file', file);
-  
-    const response = await fetch(`${API_URL}/certificate`, {
-      method: 'POST',
-      headers: {
-        // For multipart/form-data, we don't set Content-Type. The browser does it automatically.
-        'Authorization': `Bearer ${token}`,
-      },
-      body: formData,
-    });
-  
-    if (!response.ok) {
-      // Attempt to get more detailed error info from the response body
-      const errorData = await response.json().catch(() => ({ message: 'Falha ao criar o certificado.' }));
-      throw new Error(errorData.message || 'Falha ao criar o certificado.');
-    }
-  
-    return response.json();
-  };
+  if (!response.ok) {
+    throw new Error('Falha ao validar o certificado.');
+  }
 
-  export const getMyCertificates = async () => {
-    const token = localStorage.getItem('authToken');
-  
-    const response = await fetch(`${API_URL}/certificate/my-documents`, {
-      method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${token}`,
-      },
-    });
-  
-    if (!response.ok) {
-      throw new Error('Falha ao buscar os documentos.');
-    }
-  
-    return response.json();
-  };
+  return response.json();
+};
 
-  export const createOpportunity = async (opportunityData: object) => {
+export const getPendingCertificates = async () => {
+  const token = localStorage.getItem('authToken');
+
+  const response = await fetch(`${API_URL}/certificate`, { // Assuming GET /certificate returns all
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${token}`,
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error('Falha ao buscar certificados.');
+  }
+
+  const allCerts = await response.json();
+  // Filter for pending certificates on the client-side for now
+  return allCerts.filter((cert: any) => cert.status === 'PENDING');
+};
+
+export const createCertificate = async (certificateData: object, file: File) => {
+  const token = localStorage.getItem('authToken');
+
+  // FormData is used to send files and data together.
+  const formData = new FormData();
+
+  // The backend expects a JSON part named "request". We must create a Blob for it.
+  formData.append('request', new Blob([JSON.stringify(certificateData)], { type: 'application/json' }));
+
+  // The backend expects a file part named "file".
+  formData.append('file', file);
+
+  const response = await fetch(`${API_URL}/certificate`, {
+    method: 'POST',
+    headers: {
+      // For multipart/form-data, we don't set Content-Type. The browser does it automatically.
+      'Authorization': `Bearer ${token}`,
+    },
+    body: formData,
+  });
+
+  if (!response.ok) {
+    // Attempt to get more detailed error info from the response body
+    const errorData = await response.json().catch(() => ({ message: 'Falha ao criar o certificado.' }));
+    throw new Error(errorData.message || 'Falha ao criar o certificado.');
+  }
+
+  return response.json();
+};
+
+export const getMyCertificates = async () => {
+  const token = localStorage.getItem('authToken');
+
+  const response = await fetch(`${API_URL}/certificate/my-documents`, {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${token}`,
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error('Falha ao buscar os documentos.');
+  }
+
+  return response.json();
+};
+
+export const createOpportunity = async (opportunityData: object) => {
   const token = localStorage.getItem('authToken');
 
   const response = await fetch(`${API_URL}/opportunity`, {
@@ -154,90 +154,127 @@ export const applyToOpportunity = async (opportunityId: string) => {
 };
 
 export const getAllOpportunities = async () => {
-    const token = localStorage.getItem('authToken');
-  
-    const response = await fetch(`${API_URL}/opportunity`, {
-      method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${token}`,
-      },
-    });
-  
-    if (!response.ok) {
-      throw new Error('Falha ao buscar as oportunidades.');
-    }
-  
-    return response.json();
-  };
+  const token = localStorage.getItem('authToken');
 
-  export const getCertificateViewUrl = async (certificateId: string) => {
-    const token = localStorage.getItem('authToken');
-  
-    const response = await fetch(`${API_URL}/certificate/${certificateId}/view-url`, {
-      method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${token}`,
-      },
-    });
-  
-    if (!response.ok) {
-      throw new Error('Falha ao obter a URL do documento.');
-    }
-  
-    const data = await response.json();
-    return data.url; // A API retorna { "url": "..." }
-  };
+  const response = await fetch(`${API_URL}/opportunity`, {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${token}`,
+    },
+  });
 
-  export const getCertificateAiData = async (certificateId: string) => {
-    const token = localStorage.getItem('authToken');
-  
-    const response = await fetch(`${API_URL}/certificate/${certificateId}/ai-data`, {
-      method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${token}`,
-      },
-    });
-  
-    if (!response.ok) {
-      throw new Error('Falha ao obter os dados extraídos pela IA.');
-    }
-  
-    return response.json();
-  };
+  if (!response.ok) {
+    throw new Error('Falha ao buscar as oportunidades.');
+  }
 
-  export const registerUser = async (userData: object) => {
-    // Agora a função simplesmente envia os dados que recebe, incluindo a role.
-    const response = await fetch(`${API_URL}/auth/register`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(userData),
-    });
-  
-    if (!response.ok) {
-      if (response.status === 400) {
-        throw new Error('Email ou CPF já cadastrado.');
-      }
-      throw new Error('Falha ao tentar realizar o cadastro.');
-    }
-  
-    return;
-  };
+  return response.json();
+};
 
-  export const getOpportunityById = async (opportunityId: string) => {
-    const token = localStorage.getItem('authToken');
-  
-    const response = await fetch(`${API_URL}/opportunity/${opportunityId}`, {
-      method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${token}`,
-      },
-    });
-  
-    if (!response.ok) {
-      throw new Error('Falha ao buscar os detalhes da oportunidade.');
+export const getCertificateViewUrl = async (certificateId: string) => {
+  const token = localStorage.getItem('authToken');
+
+  const response = await fetch(`${API_URL}/certificate/${certificateId}/view-url`, {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${token}`,
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error('Falha ao obter a URL do documento.');
+  }
+
+  const data = await response.json();
+  return data.url; // A API retorna { "url": "..." }
+};
+
+export const getCertificateAiData = async (certificateId: string) => {
+  const token = localStorage.getItem('authToken');
+
+  const response = await fetch(`${API_URL}/certificate/${certificateId}/ai-data`, {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${token}`,
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error('Falha ao obter os dados extraídos pela IA.');
+  }
+
+  return response.json();
+};
+
+export const registerUser = async (userData: object) => {
+  // Agora a função simplesmente envia os dados que recebe, incluindo a role.
+  const response = await fetch(`${API_URL}/auth/register`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(userData),
+  });
+
+  if (!response.ok) {
+    if (response.status === 400) {
+      throw new Error('Email ou CPF já cadastrado.');
     }
-  
-    return response.json();
-  };
+    throw new Error('Falha ao tentar realizar o cadastro.');
+  }
+
+  return;
+};
+
+export const getOpportunityById = async (opportunityId: string) => {
+  const token = localStorage.getItem('authToken');
+
+  const response = await fetch(`${API_URL}/opportunity/${opportunityId}`, {
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${token}`,
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error('Falha ao buscar os detalhes da oportunidade.');
+  }
+
+  return response.json();
+};
+
+export const updateOpportunity = async (id: string, opportunityData: any) => {
+  const token = typeof window !== 'undefined' ? localStorage.getItem('authToken') : null;
+
+  const response = await fetch(`${API_URL}/opportunity/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    },
+    body: JSON.stringify(opportunityData),
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json().catch(() => ({}));
+    throw new Error(errorData.message || 'Failed to update opportunity');
+  }
+
+  return response.json();
+};
+
+export const deleteOpportunity = async (id: string): Promise<void> => {
+  const token = typeof window !== 'undefined' ? localStorage.getItem('authToken') : null;
+
+  const response = await fetch(`${API_URL}/opportunity/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    },
+  });
+
+  if (!response.ok) {
+    const errorData = await response.json().catch(() => ({}));
+    throw new Error(errorData.message || 'Falha ao deletar oportunidade.');
+  }
+};

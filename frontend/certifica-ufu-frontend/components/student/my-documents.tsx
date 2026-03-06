@@ -28,11 +28,9 @@ export function MyDocuments() {
   const [isLoading, setIsLoading] = useState(true);
   const { toast } = useToast();
 
-  // ADD THIS STATE: It will be false on the server and true on the client after mounting.
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    // This effect now runs once to confirm we are on the client side.
     setIsClient(true);
 
     const fetchDocuments = async () => {
@@ -53,13 +51,10 @@ export function MyDocuments() {
     fetchDocuments();
   }, [toast]);
   
-  // If we are not on the client yet, render a loading state or null.
-  // This ensures the server and initial client render are identical.
   if (!isClient) {
     return <p>Carregando seus documentos...</p>; 
   }
 
-  // Helper functions remain the same...
   const getStatusBadge = (status: Document['status']) => {
     switch (status) {
       case 'APPROVED':
@@ -104,15 +99,11 @@ export function MyDocuments() {
             </div>
         </header>
 
-        <main className="container-responsive py-6 sm:py-8">
-            {/* The rest of the component remains the same */}
+        <main className="container-responsive py-6 sm:py-8 max-w-5xl mx-auto">
             {isLoading ? (
               <p>Carregando...</p>
             ) : (
               <>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-                    {/* Summary Cards */}
-                </div>
                 <Card>
                     <CardHeader>
                         <CardTitle>Lista de Documentos</CardTitle>
@@ -120,12 +111,28 @@ export function MyDocuments() {
                     <CardContent>
                         <div className="space-y-4">
                             {documents.map((document) => (
-                                <div key={document.id} className="flex items-center justify-between p-4 border rounded-lg hover:bg-gray-50 cursor-pointer" onClick={() => handleViewDocument(document)}>
-                                    <div>
-                                        <h3 className="font-medium">{document.title}</h3>
-                                        <p className="text-sm text-muted-foreground">{document.category} • {document.durationInHours}h • Enviado em {formatDate(document.createdDate)}</p>
+                                <div 
+                                  key={document.id} 
+                                  className={`flex flex-col p-4 border rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 cursor-pointer transition-colors ${document.status === 'DENIED' ? 'border-red-200 dark:border-red-900/50' : ''}`} 
+                                  onClick={() => handleViewDocument(document)}
+                                >
+                                    <div className="flex items-center justify-between">
+                                        <div>
+                                            <h3 className="font-medium text-gray-900 dark:text-gray-100">{document.title}</h3>
+                                            <p className="text-sm text-muted-foreground">{document.category.replace(/_/g, ' ')} • {document.durationInHours}h • Enviado em {formatDate(document.createdDate)}</p>
+                                        </div>
+                                        {getStatusBadge(document.status)}
                                     </div>
-                                    {getStatusBadge(document.status)}
+                                    
+                                    {document.status === 'DENIED' && document.rejectionReason && (
+                                      <div className="mt-3 p-3 bg-red-50 dark:bg-red-900/20 rounded-md border border-red-100 dark:border-red-900/30 flex items-start animate-in fade-in slide-in-from-top-2">
+                                        <AlertCircle className="w-4 h-4 text-red-600 dark:text-red-400 mr-2 mt-0.5 flex-shrink-0" />
+                                        <div className="text-sm text-red-800 dark:text-red-300">
+                                          <span className="font-semibold">Motivo da rejeição: </span>
+                                          {document.rejectionReason}
+                                        </div>
+                                      </div>
+                                    )}
                                 </div>
                             ))}
                         </div>
