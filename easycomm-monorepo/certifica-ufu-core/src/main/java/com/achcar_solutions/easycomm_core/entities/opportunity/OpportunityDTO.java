@@ -17,6 +17,12 @@ public record OpportunityDTO(
 
         @Schema(description = "Number of complementary hours awarded.", example = "60")
         @NotNull(message = "Hours are required.")
-        Integer hours
+        Integer hours,
+
+        @Schema(description = "Start date of the opportunity.", example = "2024-03-01")
+        String startDate,
+
+        @Schema(description = "End date of the opportunity.", example = "2024-06-30")
+        String endDate
 ) {
 }

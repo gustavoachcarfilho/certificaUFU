@@ -38,6 +38,12 @@ public class Opportunity {
     @Schema(description = "Identifier of the user who created the opportunity.", example = "admin@email.com")
     private String createdBy;
 
+    @Schema(description = "Start date of the opportunity.", example = "2024-03-01")
+    private String startDate;
+
+    @Schema(description = "End date of the opportunity.", example = "2024-06-30")
+    private String endDate;
+
     @Schema(description = "List of user IDs that applied for the opportunity.", example = "[\"user1@email.com\", \"user2@email.com\"]")
     private List<String> applicants;
 }

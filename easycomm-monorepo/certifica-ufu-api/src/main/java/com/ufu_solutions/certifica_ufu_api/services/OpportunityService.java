@@ -24,6 +24,8 @@ public class OpportunityService {
                 .title(data.title())
                 .description(data.description())
                 .hours(data.hours())
+                .startDate(data.startDate())
+                .endDate(data.endDate())
                 .createdBy(username)
                 .status(OpportunityStatus.OPEN)
                 .applicants(new ArrayList<>())
@@ -45,6 +47,8 @@ public class OpportunityService {
         opportunity.setTitle(data.title());
         opportunity.setDescription(data.description());
         opportunity.setHours(data.hours());
+        opportunity.setStartDate(data.startDate());
+        opportunity.setEndDate(data.endDate());
         return opportunityRepository.save(opportunity);
     }
 
