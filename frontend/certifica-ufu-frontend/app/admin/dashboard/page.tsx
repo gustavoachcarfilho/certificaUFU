@@ -523,11 +523,54 @@ export default function AdminDashboardPage() {
             <div className="p-4 bg-blue-50 dark:bg-blue-950/30 rounded-xl border border-blue-100 dark:border-blue-900">
               <h3 className="text-xs font-bold uppercase text-blue-600 mb-3 flex items-center gap-2"><AlertTriangle className="w-3 h-3" /> IA Análise</h3>
               {aiData ? (
-                <div className="space-y-2 text-sm">
-                  <p><span className="text-muted-foreground">Nome:</span> {aiData.participantName || 'N/A'}</p>
-                  <p><span className="text-muted-foreground">Carga:</span> <span className={aiData.workloadMismatch ? 'text-red-500 font-bold' : ''}>{aiData.detectedWorkload}h</span></p>
-                  {aiData.workloadMismatch && <p className="text-[10px] text-red-500 italic">Divergência: Aluno informou {aiData.userWorkload}h</p>}
-                </div>
+                (() => {
+                  const hasAnyData =
+                    aiData.participantName ||
+                    aiData.institution ||
+                    aiData.eventDate ||
+                    aiData.detectedWorkload != null ||
+                    aiData.confidenceScore != null;
+
+                  if (!hasAnyData) {
+                    return (
+                      <p className="text-xs italic text-muted-foreground">
+                        A IA não conseguiu processar este documento.
+                      </p>
+                    );
+                  }
+
+                  return (
+                    <div className="space-y-2 text-sm">
+                      {aiData.participantName && (
+                        <p><span className="text-muted-foreground">Nome:</span> {aiData.participantName}</p>
+                      )}
+                      {aiData.institution && (
+                        <p><span className="text-muted-foreground">Instituição:</span> {aiData.institution}</p>
+                      )}
+                      {aiData.eventDate && (
+                        <p><span className="text-muted-foreground">Data:</span> {aiData.eventDate}</p>
+                      )}
+                      {aiData.detectedWorkload != null && (
+                        <>
+                          <p>
+                            <span className="text-muted-foreground">Carga:</span>{' '}
+                            <span className={aiData.workloadMismatch ? 'text-red-500 font-bold' : ''}>
+                              {aiData.detectedWorkload}h
+                            </span>
+                          </p>
+                          {aiData.workloadMismatch && (
+                            <p className="text-[10px] text-red-500 italic">
+                              Divergência: Aluno informou {aiData.userWorkload}h
+                            </p>
+                          )}
+                        </>
+                      )}
+                      {aiData.confidenceScore != null && (
+                        <p><span className="text-muted-foreground">Confiança:</span> {Math.round(aiData.confidenceScore * 100)}%</p>
+                      )}
+                    </div>
+                  );
+                })()
               ) : <p className="text-xs italic text-muted-foreground">A processar dados...</p>}
             </div>
           </div>
